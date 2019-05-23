@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "description": "Simple snackbar-style notifications for React",
   "main": "build/index.js",
+  "files": [
+    "build",
+    "styles"
+  ],
   "scripts": {
+    "prepublishOnly": "npm run build",
     "build": "babel src -d build",
     "build:watch": "babel src -d build --watch",
     "clean": "rm -rf build"
