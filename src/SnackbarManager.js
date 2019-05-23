@@ -13,36 +13,24 @@ export default class SnackbarManager extends React.Component {
     };
   }
 
-  showNotification(notification) {
-    notification.key = uuidv4();
-    
+  create(notification) {
     this.setState({
       notifications: [
         ...this.state.notifications,
-        notification
+        {...notification, key: uuidv4()}
       ]
     }, () => {
-      setTimeout(() => this.clearNotification(notification), notification.timeout || this.props.timeout);
+      setTimeout(() => {
+        this.setState({
+          notifications: this.state.notifications.filter(n => n !== notification)
+        });
+      }, notification.timeout || this.props.timeout);
     });
-  }
-
-  clearNotification(notification) {
-    this.setState({
-      notifications: this.state.notifications.filter(n => n !== notification)
-    });
-  }
-
-  getTopPosition() {
-    return `calc(100% - ${4 * this.state.notifications.length}em)`;
   }
 
   render() {
     return (
-      <div
-        className="react-snackbar-alert__snackbar-manager"
-        style={{
-          top: this.getTopPosition()
-      }}>
+      <div className="react-snackbar-alert__snackbar-manager">
         {this.state.notifications.map(notification => <Snackbar key={notification.key} message={notification.message} />)}
       </div>
     );
