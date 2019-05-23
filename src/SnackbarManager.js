@@ -14,10 +14,12 @@ export default class SnackbarManager extends React.Component {
   }
 
   create(notification) {
+    notification.key = uuidv4();
+
     this.setState({
       notifications: [
         ...this.state.notifications,
-        {...notification, key: uuidv4()}
+        notification
       ]
     }, () => {
       setTimeout(() => {
