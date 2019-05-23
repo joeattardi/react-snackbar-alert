@@ -1,12 +1,16 @@
 {
   "name": "react-snackbar-alert",
   "version": "1.0.0",
-  "description": "Simple snackbar alerts for React",
+  "description": "Simple snackbar-style notifications for React",
   "main": "build/index.js",
   "scripts": {
     "build": "babel src -d build",
     "build:watch": "babel src -d build --watch",
     "clean": "rm -rf build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joeattardi/react-snackbar-alert.git"
   },
   "keywords": [
     "react",
@@ -14,7 +18,7 @@
     "alert",
     "notification"
   ],
-  "author": "Joe Attardi",
+  "author": "Joe Attardi <jattardi@gmail.com> (https://joeattardi.codes)",
   "license": "MIT",
   "devDependencies": {
     "@babel/cli": "^7.4.4",
