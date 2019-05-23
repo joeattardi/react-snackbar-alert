@@ -1,0 +1,18 @@
+.react-snackbar-alert__snackbar-manager {
+  position: fixed;
+  width: 20em;
+  top: 95%;
+  left: calc(50% - 10em);
+  z-index: 10000;
+}
+
+.react-snackbar-alert__snackbar {
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  color: #FFFFFF;
+  height: 3em;
+  line-height: 3em;
+  padding: 0.25em;
+  text-align: center;
+  margin-bottom: 0.5em;
+}

@@ -1,0 +1,33 @@
+{
+  "name": "react-snackbar-alert",
+  "version": "1.0.0",
+  "description": "Simple snackbar alerts for React",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "babel src -d build",
+    "build:watch": "babel src -d build --watch",
+    "clean": "rm -rf build"
+  },
+  "keywords": [
+    "react",
+    "snackbar",
+    "alert",
+    "notification"
+  ],
+  "author": "Joe Attardi",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0"
+  },
+  "peerDependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "dependencies": {
+    "prop-types": "^15.7.2",
+    "uuid": "^3.3.2"
+  }
+}
