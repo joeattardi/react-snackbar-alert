@@ -54,7 +54,7 @@ export default function IndexPage() {
             <p>The default timeout is 3 seconds.</p>
 
             <div>
-              <button onClick={() => showSnackbar(baseSnackbar)}>Show Snackbar</button>
+              <button onClick={() => showSnackbar({...baseSnackbar})}>Show Snackbar</button>
             </div>
 
             <pre>
@@ -90,7 +90,7 @@ export default function SnackbarExample() {
             <p>The timeout can be changed by setting the `timeout` property of the passed snackbar object.</p>
 
             <div>
-              <button onClick={() => showSnackbar(customTimeoutSnackbar)}>Show Snackbar</button>
+              <button onClick={() => showSnackbar({...customTimeoutSnackbar})}>Show Snackbar</button>
             </div>
             
             <pre>
