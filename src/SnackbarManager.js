@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import uuidv4 from 'uuid/v4';
 
 import Snackbar from './Snackbar';
@@ -33,7 +34,13 @@ export default class SnackbarManager extends React.Component {
   render() {
     return (
       <div className="react-snackbar-alert__snackbar-manager">
-        {this.state.notifications.map(notification => <Snackbar key={notification.key} message={notification.message} />)}
+        <TransitionGroup>
+          {this.state.notifications.map(notification => (
+            <CSSTransition key={notification.key} timeout={250} classNames="react-snackbar-alert__snackbar">
+              <Snackbar message={notification.message} />
+            </CSSTransition>
+          ))}
+        </TransitionGroup>
       </div>
     );
   }

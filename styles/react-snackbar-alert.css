@@ -16,3 +16,25 @@
   text-align: center;
   margin-bottom: 0.5em;
 }
+
+.react-snackbar-alert__snackbar-enter {
+  opacity: 0;
+  transform: scaleY(0.5);
+}
+
+.react-snackbar-alert__snackbar-enter-active {
+  opacity: 1;
+  transform: scaleY(1);
+  transition: all 250ms;
+}
+
+.react-snackbar-alert__snackbar-exit {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.react-snackbar-alert__snackbar-exit-active {
+  opacity: 0;
+  transform: scaleY(0.5);
+  transition: all 250ms;
+}
