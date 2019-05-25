@@ -1,7 +1,32 @@
 import React from 'react';
+import styled from 'styled-components';
 
-export default function Snackbar({ message }) {
+const AnimatedSnackbar = styled.div`
+  &.react-snackbar-alert__snackbar-enter {
+    opacity: 0;
+    transform: scaleY(0.5);
+  }
+
+  &.react-snackbar-alert__snackbar-enter-active {
+    opacity: 1;
+    transform: scaleY(1);
+    transition: all ${props => props.animationTimeout}ms;
+  }
+
+  &.react-snackbar-alert__snackbar-exit {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+
+  &.react-snackbar-alert__snackbar-exit-active {
+    opacity: 0;
+    transform: scaleY(0.5);
+    transition: all ${props => props.animationTimeout}ms;
+  }
+`;
+
+export default function Snackbar({ animationTimeout, message }) {
   return (
-    <div className="react-snackbar-alert__snackbar">{message}</div>
+    <AnimatedSnackbar animationTimeout={animationTimeout} className="react-snackbar-alert__snackbar">{message}</AnimatedSnackbar>
   );
 }

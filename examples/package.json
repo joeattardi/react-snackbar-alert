@@ -19,7 +19,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
-    "react-snackbar-alert": "^1.0.0"
+    "react-snackbar-alert": "^1.1.0"
   },
   "devDependencies": {
     "gh-pages": "^2.0.1",
