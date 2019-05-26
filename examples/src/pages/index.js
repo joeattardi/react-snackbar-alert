@@ -1,7 +1,7 @@
 import Prism from 'prismjs';
 import 'prismjs/themes/prism.css';
 import 'prismjs/components/prism-jsx.min';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 
 import { SnackbarManager } from 'react-snackbar-alert';
@@ -9,42 +9,22 @@ import 'react-snackbar-alert/styles/react-snackbar-alert.css';
 
 import BaseExample from '../components/examples/BaseExample';
 import CustomAnimationTimeoutExample from '../components/examples/CustomAnimationTimeoutExample';
+import CustomChildComponentExample from '../components/examples/CustomChildComponentExample';
 import CustomComponentExample from '../components/examples/CustomComponentExample';
 import CustomTimeoutExample from '../components/examples/CustomTimeoutExample';
 
 import styles from './index.module.css';
-
-const baseSnackbar = {
-  message: 'Hello Snackbar!'
-};
-
-const customTimeoutSnackbar = {
-  message: '5 second timeout!',
-  timeout: 5000
-};
-
-const customAnimationTimeoutSnackbar = {
-  message: 'Custom animation timeout!',
-  animationTimeout: 1000
-};
 
 export default function IndexPage() {
   useEffect(() => {
     Prism.highlightAll();
   });
 
-  const snackbarManager = useRef(null);
-
-  function showSnackbar(snackbar) {
-    snackbarManager.current.create(snackbar);
-  }
-
   return (
     <div>
       <Helmet>
         <title>React Snackbar Alert</title>
       </Helmet>
-      <SnackbarManager ref={snackbarManager} />
       <header id={styles.header}>
         <h1>React Snackbar Alert</h1>
         <div><a href="https://github.com/joeattardi/react-snackbar-alert"><img src="https://img.shields.io/github/stars/joeattardi/react-snackbar-alert.svg?style=social" /></a></div>
@@ -180,6 +160,12 @@ export default function CustomAnimationTimeoutExample() {
           <div className={styles.example}>
             <p>
               For greater customization of the snackbar component, a custom component can be used.
+              Create your custom snackbar component and pass it as the <code>component</code> prop to the <code>SnackbarManager</code>.
+              The component will receive a <code>message</code> prop with the message to display.
+            </p>
+
+            <p>
+              Note that if you use a custom component, you will lose the default animations.
             </p>
 
             <CustomComponentExample />
@@ -224,6 +210,56 @@ export default function CustomComponentExample() {
 }
               `}</code>
             </pre>
+
+            <p>
+              You can also extend the default <code>Snackbar</code> component.
+              This allows you to keep the default styling and animation, but also add your own child content to the snackbar.
+            </p>
+
+            <p>
+              To extend the default component, import the <code>Snackbar</code> component and use it in your custom component.
+              Make sure to pass all received props along to the <code>Snackbar</code> component, or else the animations won't work.
+            </p>
+
+            <CustomChildComponentExample />
+
+            <pre>
+              <code className="language-jsx">{`
+import React, { useRef } from 'react';
+
+import { Snackbar, SnackbarManager } from 'react-snackbar-alert';
+import 'react-snackbar-alert/styles/react-snackbar-alert.css';
+
+function CustomSnackbarComponent(props) {
+  return (
+    <Snackbar {...props}>
+      <h2 style={{margin: 0}}>{props.message}</h2>
+    </Snackbar>
+  );
+}
+
+export default function CustomComponentExample() {
+  const snackbarManager = useRef(null);
+
+  function showSnackbar() {
+    snackbarManager.current.create({
+      message: 'Hello Snackbar!'
+    });
+  } 
+
+  return (
+    <div>
+      <SnackbarManager ref={snackbarManager} component={CustomSnackbarComponent} />
+      <main>
+        <button onClick={showSnackbar}>Show Snackbar</button>
+      </main>
+    </div>
+  );
+}
+
+              `}</code>
+            </pre>
+
           </div>
         </div>
       </main>

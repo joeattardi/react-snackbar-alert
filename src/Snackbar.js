@@ -25,8 +25,10 @@ const AnimatedSnackbar = styled.div`
   }
 `;
 
-export default function Snackbar({ animationTimeout, message }) {
+export default function Snackbar({ animationTimeout, children, message }) {
   return (
-    <AnimatedSnackbar animationTimeout={animationTimeout} className="react-snackbar-alert__snackbar">{message}</AnimatedSnackbar>
+    <AnimatedSnackbar animationTimeout={animationTimeout} className="react-snackbar-alert__snackbar">
+      {children || message}
+    </AnimatedSnackbar>
   );
 }
