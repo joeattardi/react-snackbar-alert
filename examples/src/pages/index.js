@@ -10,6 +10,7 @@ import {
   BaseDocumentation,
   CustomAnimationTimeoutDocumentation,
   CustomChildComponentDocumentation,
+  CustomComponentDataDocumentation,
   CustomComponentDocumentation,
   CustomTimeoutDocumentation
 } from '../components/examples';
@@ -45,6 +46,7 @@ export default function IndexPage() {
           <CustomAnimationTimeoutDocumentation />
           <CustomComponentDocumentation />
           <CustomChildComponentDocumentation />
+          <CustomComponentDataDocumentation />
         </div>
       </main>
     </div>

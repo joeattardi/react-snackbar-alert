@@ -10,8 +10,10 @@
   background: rgba(0, 0, 0, 0.8);
   border-radius: 5px;
   color: #FFFFFF;
-  height: 3em;
-  line-height: 3em;
+  min-height: 3em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 0.25em;
   text-align: center;
   margin-bottom: 0.5em;
