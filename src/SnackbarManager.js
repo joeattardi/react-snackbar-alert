@@ -32,12 +32,14 @@ export default class SnackbarManager extends React.Component {
   }
 
   render() {
+    const SnackbarComponent = this.props.component || Snackbar;
+
     return (
       <div className="react-snackbar-alert__snackbar-manager">
         <TransitionGroup>
           {this.state.notifications.map(({ key, message, animationTimeout }) => (
             <CSSTransition key={key} timeout={animationTimeout || this.props.animationTimeout} classNames="react-snackbar-alert__snackbar">
-              <Snackbar animationTimeout={animationTimeout || this.props.animationTimeout} message={message} />
+              <SnackbarComponent animationTimeout={animationTimeout || this.props.animationTimeout} message={message} />
             </CSSTransition>
           ))}
         </TransitionGroup>

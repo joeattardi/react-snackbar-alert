@@ -8,7 +8,8 @@ import { SnackbarManager } from 'react-snackbar-alert';
 import 'react-snackbar-alert/styles/react-snackbar-alert.css';
 
 import BaseExample from '../components/examples/BaseExample';
-import CustomAnimationTimeoutExample from '../components/examples/CustomAnimationTimeout';
+import CustomAnimationTimeoutExample from '../components/examples/CustomAnimationTimeoutExample';
+import CustomComponentExample from '../components/examples/CustomComponentExample';
 import CustomTimeoutExample from '../components/examples/CustomTimeoutExample';
 
 import styles from './index.module.css';
@@ -165,6 +166,56 @@ export default function CustomAnimationTimeoutExample() {
   return (
     <div>
       <SnackbarManager animationTimeout={1000} ref={snackbarManager} />
+      <main>
+        <button onClick={showSnackbar}>Show Snackbar</button>
+      </main>
+    </div>
+  );
+}
+              `}</code>
+            </pre>
+          </div>
+
+          <h3>Custom Snackbar Component</h3>
+          <div className={styles.example}>
+            <p>
+              For greater customization of the snackbar component, a custom component can be used.
+            </p>
+
+            <CustomComponentExample />
+
+            <pre>
+              <code className="language-jsx">{`
+import React, { useRef } from 'react';
+
+import { SnackbarManager } from 'react-snackbar-alert';
+import 'react-snackbar-alert/styles/react-snackbar-alert.css';
+
+function CustomSnackbarComponent({ message }) {
+  return (
+    <div style={{
+      background: '#FF0000',
+      color: '#FFFFFF',
+      padding: '0.5em',
+      marginBottom: '0.5em'
+    }}>
+      {message}
+    </div>
+  );
+}
+
+export default function CustomComponentExample() {
+  const snackbarManager = useRef(null);
+
+  function showSnackbar() {
+    snackbarManager.current.create({
+      message: 'Hello Snackbar!'
+    });
+  } 
+
+  return (
+    <div>
+      <SnackbarManager ref={snackbarManager} component={CustomSnackbarComponent} />
       <main>
         <button onClick={showSnackbar}>Show Snackbar</button>
       </main>
