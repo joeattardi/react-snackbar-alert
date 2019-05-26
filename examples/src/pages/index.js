@@ -7,6 +7,10 @@ import { Helmet } from 'react-helmet';
 import { SnackbarManager } from 'react-snackbar-alert';
 import 'react-snackbar-alert/styles/react-snackbar-alert.css';
 
+import BaseExample from '../components/examples/BaseExample';
+import CustomAnimationTimeoutExample from '../components/examples/CustomAnimationTimeout';
+import CustomTimeoutExample from '../components/examples/CustomTimeoutExample';
+
 import styles from './index.module.css';
 
 const baseSnackbar = {
@@ -59,7 +63,7 @@ export default function IndexPage() {
             <p>The default timeout is 3 seconds.</p>
 
             <div>
-              <button onClick={() => showSnackbar({...baseSnackbar})}>Show Snackbar</button>
+              <BaseExample />
             </div>
 
             <pre>
@@ -69,7 +73,7 @@ import React, { useRef } from 'react';
 import { SnackbarManager } from 'react-snackbar-alert';
 import 'react-snackbar-alert/styles/react-snackbar-alert.css';
 
-export default function SnackbarExample() {
+export default function BaseExample() {
   const snackbarManager = useRef(null);
 
   function showSnackbar() {
@@ -95,7 +99,7 @@ export default function SnackbarExample() {
             <p>The timeout can be changed by setting the `timeout` property of the passed snackbar object.</p>
 
             <div>
-              <button onClick={() => showSnackbar({...customTimeoutSnackbar})}>Show Snackbar</button>
+              <CustomTimeoutExample />
             </div>
             
             <pre>
@@ -105,7 +109,7 @@ import React, { useRef } from 'react';
 import { SnackbarManager } from 'react-snackbar-alert';
 import 'react-snackbar-alert/styles/react-snackbar-alert.css';
 
-export default function SnackbarExample() {
+export default function CustomTimeoutExample() {
   const snackbarManager = useRef(null);
 
   function showSnackbar() {
@@ -139,7 +143,7 @@ export default function SnackbarExample() {
             </ul>
 
             <div>
-              <button onClick={() => showSnackbar({...customAnimationTimeoutSnackbar})}>Show Snackbar</button>
+              <CustomAnimationTimeoutExample />
             </div>
             
             <pre>
@@ -149,7 +153,7 @@ import React, { useRef } from 'react';
 import { SnackbarManager } from 'react-snackbar-alert';
 import 'react-snackbar-alert/styles/react-snackbar-alert.css';
 
-export default function SnackbarExample() {
+export default function CustomAnimationTimeoutExample() {
   const snackbarManager = useRef(null);
 
   function showSnackbar() {
