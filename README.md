@@ -1,6 +1,10 @@
 # react-snackbar-alert
 Simple snackbar-style notifications for React
 
+![npm](https://img.shields.io/npm/v/react-snackbar-alert.svg)
+
+[![Build Status](https://travis-ci.org/joeattardi/react-snackbar-alert.svg?branch=master)](https://travis-ci.org/joeattardi/react-snackbar-alert)
+
 ## Installation
 
     npm install --save react-snackbar-alert
@@ -10,14 +14,16 @@ Simple snackbar-style notifications for React
 The basic usage is as follows:
 
 1. Import the `SnackbarManager` component
-2. Add the `SnackbarManager` component to your application's `render` method and save it to a ref
-3. Call `create` on the ref to create snackbar alerts
+2. Import the CSS
+3. Add the `SnackbarManager` component to your application's `render` method and save it to a ref
+4. Call `create` on the ref to create snackbar alerts
 
 ### Example
 
 ```javascript
   import React from 'react';
   import { SnackbarManager } from 'react-snackbar-alert';
+  import 'react-snackbar-alert/styles/react-snackbar-alert.css';
 
   export default class App extends React.Component {
     constructor(props) {
