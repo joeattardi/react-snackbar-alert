@@ -9,6 +9,8 @@ export default class SnackbarManager extends React.Component {
   constructor(props) {
     super(props);
 
+    this.timeouts = [];
+
     this.state = {
       notifications: []
     };
@@ -23,12 +25,18 @@ export default class SnackbarManager extends React.Component {
         notification
       ]
     }, () => {
-      setTimeout(() => {
+      const timeout = setTimeout(() => {
         this.setState({
           notifications: this.state.notifications.filter(n => n !== notification)
         });
+        this.timeouts = this.timeouts.filter(t => t !== timeout);
       }, notification.timeout || this.props.timeout);
+      this.timeouts.push(timeout);
     });
+  }
+
+  componentWillUnmount() {
+    this.timeouts.forEach(timeout => clearTimeout(timeout));
   }
 
   render() {

@@ -11,7 +11,9 @@
     "prepublishOnly": "npm run build",
     "build": "babel src -d build",
     "build:watch": "babel src -d build --watch",
-    "clean": "rm -rf build"
+    "clean": "rm -rf build",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "repository": {
     "type": "git",
@@ -29,7 +31,14 @@
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
-    "@babel/preset-react": "^7.0.0"
+    "@babel/preset-react": "^7.0.0",
+    "babel-jest": "^24.8.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.13.2",
+    "jest": "^24.8.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "styled-components": "^4.2.0"
   },
   "peerDependencies": {
     "react": "^16.8.6",
