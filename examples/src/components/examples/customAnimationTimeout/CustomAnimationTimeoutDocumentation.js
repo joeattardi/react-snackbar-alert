@@ -1,5 +1,7 @@
 import React from 'react';
+import escape from 'escape-html';
 
+import src from '!!raw-loader!./CustomAnimationTimeoutExample.js';
 import CustomAnimationTimeoutExample from './CustomAnimationTimeoutExample';
 
 export default function CustomAnimationTimeoutDocumentation() {
@@ -18,31 +20,7 @@ export default function CustomAnimationTimeoutDocumentation() {
         <CustomAnimationTimeoutExample />
             
         <pre>
-          <code className="language-jsx">{`
-import React, { useRef } from 'react';
-
-import { SnackbarManager } from 'react-snackbar-alert';
-import 'react-snackbar-alert/styles/react-snackbar-alert.css';
-
-export default function CustomAnimationTimeoutExample() {
-  const snackbarManager = useRef(null);
-
-  function showSnackbar() {
-    snackbarManager.current.create({
-      message: 'Custom animation timeout!'
-    });
-  } 
-
-  return (
-    <div>
-      <SnackbarManager animationTimeout={1000} ref={snackbarManager} />
-      <main>
-        <button onClick={showSnackbar}>Show Snackbar</button>
-      </main>
-    </div>
-  );
-}
-        `}</code>
+          <code className="language-jsx" dangerouslySetInnerHTML={{__html: escape(src)}}></code>
       </pre>
     </section>
   );
