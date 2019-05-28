@@ -1,8 +1,8 @@
 import React from 'react';
-import escape from 'escape-html';
 
 import src from '!!raw-loader!./BaseExample.js';
 import BaseExample from './BaseExample';
+import SourceFile from '../../SourceFile';
 
 export default function BaseDocumentation() {
   return (
@@ -15,9 +15,7 @@ export default function BaseDocumentation() {
 
       <BaseExample />
 
-      <pre>
-        <code className="language-jsx" dangerouslySetInnerHTML={{__html: escape(src)}}></code>
-      </pre>
+      <SourceFile src={src} />
     </section>
   );
 }

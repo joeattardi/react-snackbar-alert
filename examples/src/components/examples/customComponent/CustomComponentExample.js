@@ -3,18 +3,7 @@ import React, { useRef } from 'react';
 import { SnackbarManager } from 'react-snackbar-alert';
 import 'react-snackbar-alert/styles/react-snackbar-alert.css';
 
-function CustomSnackbarComponent({ message }) {
-  return (
-    <div style={{
-      background: '#FF0000',
-      color: '#FFFFFF',
-      padding: '0.5em',
-      marginBottom: '0.5em'
-    }}>
-      {message}
-    </div>
-  );
-}
+import CustomSnackbarComponent from './CustomSnackbarComponent';
 
 export default function CustomComponentExample() {
   const snackbarManager = useRef(null);

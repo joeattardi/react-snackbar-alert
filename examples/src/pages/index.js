@@ -5,6 +5,7 @@ import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 
 import 'react-snackbar-alert/styles/react-snackbar-alert.css';
+import 'react-tabs/style/react-tabs.css';
 
 import {
   BaseDocumentation,

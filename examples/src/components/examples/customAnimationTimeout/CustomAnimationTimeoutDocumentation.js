@@ -1,8 +1,8 @@
 import React from 'react';
-import escape from 'escape-html';
 
 import src from '!!raw-loader!./CustomAnimationTimeoutExample.js';
 import CustomAnimationTimeoutExample from './CustomAnimationTimeoutExample';
+import SourceFile from '../../SourceFile';
 
 export default function CustomAnimationTimeoutDocumentation() {
   return (
@@ -18,10 +18,7 @@ export default function CustomAnimationTimeoutDocumentation() {
         </ul>
 
         <CustomAnimationTimeoutExample />
-            
-        <pre>
-          <code className="language-jsx" dangerouslySetInnerHTML={{__html: escape(src)}}></code>
-      </pre>
+        <SourceFile src={src} />
     </section>
   );
 }

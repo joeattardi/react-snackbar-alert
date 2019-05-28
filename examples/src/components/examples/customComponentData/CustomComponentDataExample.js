@@ -1,18 +1,9 @@
 import React, { useRef } from 'react';
 
-import { Snackbar, SnackbarManager } from 'react-snackbar-alert';
+import { SnackbarManager } from 'react-snackbar-alert';
 import 'react-snackbar-alert/styles/react-snackbar-alert.css';
 
-function CustomSnackbarComponent(props) {
-  return (
-    <Snackbar {...props}>
-      <div style={{display: 'flex', justifyContent: 'center'}}>
-        <div style={{margin: '0.5em', flexGrow: 1}}>{props.message}</div>
-        <button style={{marginRight: '0.5em'}}>{props.data.action}</button>
-      </div>
-    </Snackbar>
-  );
-}
+import CustomSnackbarComponent from './CustomSnackbarComponent';
 
 export default function CustomComponentDataExample() {
   const snackbarManager = useRef(null);

@@ -1,8 +1,11 @@
 import React from 'react';
-import escape from 'escape-html';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
-import src from '!!raw-loader!./CustomComponentExample.js';
+import customComponentExampleSrc from '!!raw-loader!./CustomComponentExample.js';
+import customSnackbarComponentSrc from '!!raw-loader!./CustomSnackbarComponent.js';
+
 import CustomComponentExample from './CustomComponentExample';
+import SourceFile from '../../SourceFile';
 
 export default function CustomComponentDocumentation() {
   return (
@@ -20,9 +23,14 @@ export default function CustomComponentDocumentation() {
 
         <CustomComponentExample />
 
-        <pre>
-          <code className="language-jsx" dangerouslySetInnerHTML={{__html: escape(src)}}></code>
-      </pre>
+        <Tabs forceRenderTabPanel={true}>
+          <TabList>
+            <Tab>CustomComponentExample.js</Tab>
+            <Tab>CustomSnackbarComponent.js</Tab>
+          </TabList>
+          <TabPanel><SourceFile src={customComponentExampleSrc} /></TabPanel>
+          <TabPanel><SourceFile src={customSnackbarComponentSrc} /></TabPanel>
+        </Tabs>
     </section>
   );
 }
