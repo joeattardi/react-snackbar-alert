@@ -8,6 +8,7 @@ export default function Navigation() {
     <nav id={styles.sidebar}>
       <ul>
         <li><Link to="/" activeClassName={styles.active}>Home</Link></li>
+        <li><Link to="/gettingStarted" activeClassName={styles.active}>Getting Started</Link></li>
         <li><Link to="/api" activeClassName={styles.active}>API</Link></li>
       </ul>
       <h2>Examples</h2>
