@@ -1,9 +1,34 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import styled from 'styled-components';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import uuidv4 from 'uuid/v4';
 
 import Snackbar from './Snackbar';
+
+const SnackbarContainer = styled.div`
+  &.react-snackbar-alert__snackbar-container-enter {
+    opacity: 0;
+    transform: scaleY(0.1);
+  }
+
+  &.react-snackbar-alert__snackbar-container-enter-active {
+    opacity: 1;
+    transform: scaleY(1);
+    transition: all ${props => props.animationTimeout}ms;
+  }
+
+  &.react-snackbar-alert__snackbar-container-exit {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+
+  &.react-snackbar-alert__snackbar-container-exit-active {
+    opacity: 0;
+    transform: scaleY(0.1);
+    transition: all ${props => props.animationTimeout}ms;
+  }
+`;
 
 export default class SnackbarManager extends React.Component {
   constructor(props) {
@@ -58,13 +83,14 @@ export default class SnackbarManager extends React.Component {
             <CSSTransition 
               key={notification.key}
               timeout={notification.animationTimeout || this.props.animationTimeout}
-              classNames="react-snackbar-alert__snackbar">
-              <Component
-                animationTimeout={notification.animationTimeout || this.props.animationTimeout}
-                dismissable={typeof notification.dismissable !== 'undefined' ? notification.dismissable : this.props.dismissable}
-                onDismiss={() => this.remove(notification)}
-                message={notification.message}
-                data={notification.data} />
+              classNames="react-snackbar-alert__snackbar-container">
+              <SnackbarContainer animationTimeout={notification.animationTimeout || this.props.animationTimeout}>
+                <Component
+                  dismissable={typeof notification.dismissable !== 'undefined' ? notification.dismissable : this.props.dismissable}
+                  onDismiss={() => this.remove(notification)}
+                  message={notification.message}
+                  data={notification.data} />
+              </SnackbarContainer>
             </CSSTransition>
           ))}
         </TransitionGroup>

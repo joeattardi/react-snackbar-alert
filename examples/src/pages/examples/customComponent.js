@@ -18,10 +18,6 @@ export default function CustomComponentPage() {
         The component will receive a <code>message</code> prop with the message to display.
       </p>
 
-      <p>
-        Note that if you use a custom component, you will lose the default animations.
-      </p>
-
       <CustomComponentExample />
 
       <Tabs forceRenderTabPanel={true}>
