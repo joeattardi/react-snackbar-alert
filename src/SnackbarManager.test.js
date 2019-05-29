@@ -122,7 +122,7 @@ describe('SnackbarManager', () => {
     wrapper.update();
 
     const component = wrapper.find(CustomComponent).get(0);
-    expect(component.props).toEqual({
+    expect(component.props).toMatchObject({
       animationTimeout: 100,
       data: 'foobar',
       message: 'Hello!'
@@ -164,6 +164,24 @@ describe('SnackbarManager', () => {
     const snackbars = wrapper.find(Snackbar);
     expect(snackbars.get(0).props.message).toBe('Message 1');
     expect(snackbars.get(1).props.message).toBe('Message 2');    
+
+    wrapper.unmount();
+  });
+
+  it.only('should make snackbars dismissable if the prop is set', () => {
+    const wrapper = mount(<SnackbarManager dismissable={true} />);
+
+    wrapper.instance().create({ message: 'Hello! '});
+    wrapper.update();
+
+    const removeButton = wrapper.find('button.react-snackbar-alert__snackbar-close');
+    expect(removeButton).toHaveLength(1);
+    removeButton.simulate('click');
+    jest.advanceTimersByTime(250); // the fade-out animation
+    wrapper.update();
+
+    const snackbars = wrapper.find(Snackbar);
+    expect(snackbars).toHaveLength(0);
 
     wrapper.unmount();
   });

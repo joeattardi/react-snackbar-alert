@@ -14,6 +14,7 @@ export default function Navigation() {
       <h2>Examples</h2>
       <ul>
         <li><Link to="/examples/base/" activeClassName={styles.active}>Base</Link></li>
+        <li><Link to="/examples/dismissable/" activeClassName={styles.active}>Dismissable</Link></li>
         <li><Link to="/examples/customTimeout/" activeClassName={styles.active}>Custom Timeout</Link></li>
         <li><Link to="/examples/customAnimationTimeout/" activeClassName={styles.active}>Custom Animation Timeout</Link></li>
         <li><Link to="/examples/customComponent/" activeClassName={styles.active}>Custom Snackbar Component</Link></li>

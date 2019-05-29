@@ -32,6 +32,12 @@ export default function ApiPage() {
             <td>The component type to use for rendering the snackbar</td>
           </tr>
           <tr>
+            <td>dismissable</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>Whether or not created snackbars can be manually dismissed by the user</td>
+          </tr>
+          <tr>
             <td>timeout</td>
             <td>number</td>
             <td>3000</td>
@@ -71,6 +77,11 @@ export default function ApiPage() {
             <td>data</td>
             <td>object</td>
             <td>Custom data that can be used with a custom snackbar component</td>
+          </tr>
+          <tr>
+            <td>dismissable</td>
+            <td>boolean</td>
+            <td>Whether or not this snackbar can be manually dismissed by the user</td>
           </tr>
           <tr>
             <td>message (Required)</td>

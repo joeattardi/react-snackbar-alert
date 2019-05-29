@@ -25,10 +25,11 @@ const AnimatedSnackbar = styled.div`
   }
 `;
 
-export default function Snackbar({ animationTimeout, children, message }) {
+export default function Snackbar({ animationTimeout, children, dismissable, message, onDismiss }) {
   return (
     <AnimatedSnackbar animationTimeout={animationTimeout} className="react-snackbar-alert__snackbar">
-      {children || message}
+      <div className="react-snackbar-alert__snackbar-content">{children || message}</div>
+      {dismissable ? <button onClick={onDismiss} className="react-snackbar-alert__snackbar-close">&times;</button> : null}
     </AnimatedSnackbar>
   );
 }
