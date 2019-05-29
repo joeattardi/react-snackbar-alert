@@ -1,17 +1,17 @@
 import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
-import customComponentDataExampleSrc from '!!raw-loader!./CustomComponentDataExample.js';
-import customSnackbarComponentSrc from '!!raw-loader!./CustomSnackbarComponent.js';
+import customComponentDataExampleSrc from '!!raw-loader!../../components/examples/customComponentData/CustomComponentDataExample.js';
+import customSnackbarComponentSrc from '!!raw-loader!../../components/examples/customComponentData/CustomSnackbarComponent.js';
 
-import CustomComponentDataExample from './CustomComponentDataExample';
-import SourceFile from '../../SourceFile';
+import CustomComponentDataExample from '../../components/examples/customComponentData/CustomComponentDataExample';
+import SourceFile from '../../components/SourceFile';
+
+import Layout from '../../components/Layout';
 
 export default function CustomComponentDataDocumentation() {
   return (
-    <section>
-      <h3>Passing Custom Data to a Custom Component</h3>
-
+    <Layout title="Passing Custom Data to a Custom Component">
       <p>
         You can also create more rich snackbar notifications by passing arbitrary data
         that can be used when rendering a custom snackbar component.
@@ -32,6 +32,6 @@ export default function CustomComponentDataDocumentation() {
         <TabPanel><SourceFile src={customComponentDataExampleSrc} /></TabPanel>
         <TabPanel><SourceFile src={customSnackbarComponentSrc} /></TabPanel>
       </Tabs>
-    </section>
+    </Layout>
   );
 }

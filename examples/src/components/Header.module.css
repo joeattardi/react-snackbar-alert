@@ -1,0 +1,23 @@
+#header {
+  background: #2F2F2F;
+  color: #FFFFFF;
+  padding: 0.5em;
+  display: flex;
+  align-items: center;
+  height: 2em;
+}
+
+#header h1 {
+  margin: 0;
+  font-weight: normal;
+  font-size: 1.5em;
+  flex-grow: 1;
+}
+
+#header div {
+  margin: 0 0.5em;
+}
+
+#header img {
+  vertical-align: middle;
+}

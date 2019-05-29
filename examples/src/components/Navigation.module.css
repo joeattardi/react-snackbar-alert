@@ -1,0 +1,37 @@
+#sidebar {
+  background: #BDC5B8;
+  padding: 0.5em;
+  width: 16em;
+  min-width: 16em;
+  height: calc(100vh - 4em);
+}
+
+#sidebar h2 {
+  font-size: 1.2em;
+  margin: 0;
+}
+
+#sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+#sidebar ul li {
+  margin: 0.5em;
+}
+
+#sidebar ul li a {
+  text-decoration: none;
+  color: #435058;
+  border-left: 5px solid transparent;
+  padding-left: 0.25em;
+}
+
+#sidebar ul li a.active {
+  font-weight: bold;
+  border-left: 5px solid #435058;
+}
+
+#sidebar ul a:hover {
+  text-decoration: underline;
+}

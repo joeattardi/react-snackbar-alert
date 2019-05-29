@@ -1,0 +1,16 @@
+.api {
+  border-collapse: collapse;
+}
+
+.api th {
+  text-align: left;
+  padding: 0.5em;
+}
+
+.api tbody tr {
+  border-top: 1px solid #EEEEEE;
+}
+
+.api tbody tr td {
+  padding: 0.5em;
+}

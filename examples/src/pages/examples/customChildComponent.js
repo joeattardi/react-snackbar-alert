@@ -1,17 +1,17 @@
 import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
-import customChildComponentExampleSrc from '!!raw-loader!./CustomChildComponentExample.js';
-import customSnackbarComponentSrc from '!!raw-loader!./CustomSnackbarComponent.js';
+import customChildComponentExampleSrc from '!!raw-loader!../../components/examples/customChildComponent/CustomChildComponentExample.js';
+import customSnackbarComponentSrc from '!!raw-loader!../../components/examples/customChildComponent/CustomSnackbarComponent.js';
 
-import CustomChildComponentExample from './CustomChildComponentExample';
-import SourceFile from '../../SourceFile';
+import CustomChildComponentExample from '../../components/examples/customChildComponent/CustomChildComponentExample';
+import SourceFile from '../../components/SourceFile';
 
-export default function CustomChildComponentDocumentation() {
+import Layout from '../../components/Layout';
+
+export default function CustomChildComponentPage() {
   return (
-    <section>
-      <h3>Extending the Snackbar Component</h3>
-
+    <Layout title="Extending the Snackbar Component">
       <p>
         You can also extend the default <code>Snackbar</code> component.
         This allows you to keep the default styling and animation, but also add your own child content to the snackbar.
@@ -32,6 +32,6 @@ export default function CustomChildComponentDocumentation() {
         <TabPanel><SourceFile src={customChildComponentExampleSrc} /></TabPanel>
         <TabPanel><SourceFile src={customSnackbarComponentSrc} /></TabPanel>
       </Tabs>
-    </section>
+    </Layout>
   );
 }
