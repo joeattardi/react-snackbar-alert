@@ -10,7 +10,12 @@ import src from '!!raw-loader!../../components/examples/customTimeout/CustomTime
 export default function CustomTimeoutPage() {
   return (
     <Layout title="Custom Timeout">
-      <p>The timeout can be changed by setting the <code>timeout</code> property of the passed snackbar object.</p>
+      <p>By default, a snackbar is removed after 3 seconds. A custom timeout can be specified in one of two ways:</p>
+
+      <ul>
+        <li>Setting the <code>timeout</code> prop on the <code>SnackbarManager</code> for all snackbars</li>
+        <li>Setting the <code>timeout</code> property on the passed snackbar object for a specific snackbar</li>
+      </ul>
 
       <CustomTimeoutExample />
       <SourceFile src={src} />

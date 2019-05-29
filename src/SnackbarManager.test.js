@@ -114,14 +114,16 @@ describe('SnackbarManager', () => {
 
     wrapper.instance().create({
       data: 'foobar',
-      message: 'Hello!'
+      message: 'Hello!',
+      progressBar: false
     });
     wrapper.update();
 
     const component = wrapper.find(CustomComponent).get(0);
     expect(component.props).toMatchObject({
       data: 'foobar',
-      message: 'Hello!'
+      message: 'Hello!',
+      progressBar: false
     });
 
     wrapper.unmount();
@@ -170,13 +172,26 @@ describe('SnackbarManager', () => {
     wrapper.instance().create({ message: 'Hello! '});
     wrapper.update();
 
-    const removeButton = wrapper.find('button.react-snackbar-alert__snackbar-close');
-    expect(removeButton).toHaveLength(1);
-    removeButton.simulate('click');
-    jest.advanceTimersByTime(250); // the fade-out animation
+    const snackbar = wrapper.find(Snackbar);
+    snackbar.props().onDismiss();
+    jest.advanceTimersByTime(250);
     wrapper.update();
 
     expect(wrapper.find(Snackbar)).toHaveLength(0);
+
+    wrapper.unmount();
+  });
+
+  it('should let the dismissable setting be overridden by an individual snackbar', () => {
+    const wrapper = mount(<SnackbarManager dismissable={false} />);
+
+    wrapper.instance().create({
+      message: 'Hello!',
+      dismissable: true
+    });
+    wrapper.update();
+
+    expect(wrapper.find('button.react-snackbar-alert__snackbar-close')).toHaveLength(1);
 
     wrapper.unmount();
   });
@@ -194,6 +209,60 @@ describe('SnackbarManager', () => {
     wrapper.update();
 
     expect(wrapper.find(Snackbar)).toHaveLength(1);
+
+    wrapper.unmount();
+  });
+
+  it('should show the progress bar if progressBar is true on the SnackbarManager', () => {
+    const wrapper = mount(<SnackbarManager progressBar={true} />);
+
+    wrapper.instance().create({ message: 'Hello!' });
+    wrapper.update();
+
+    const snackbar = wrapper.find(Snackbar).get(0);
+    expect(snackbar.props.progressBar).toBe(true);
+
+    wrapper.unmount();
+  });
+
+  it('should show the progress bar if progressBar is true on an individual snackbar', () => {
+    const wrapper = mount(<SnackbarManager progressBar={false} />);
+
+    wrapper.instance().create({
+      message: 'Hello!',
+      progressBar: true
+    });
+    wrapper.update();
+
+    const snackbar = wrapper.find(Snackbar).get(0);
+    expect(snackbar.props.progressBar).toBe(true);
+
+    wrapper.unmount();
+  });
+
+  it('should not show the progress bar if progressBar is false on the SnackbarManager', () => {
+    const wrapper = mount(<SnackbarManager progressBar={false} />);
+
+    wrapper.instance().create({ message: 'Hello!' });
+    wrapper.update();
+
+    const snackbar = wrapper.find(Snackbar).get(0);
+    expect(snackbar.props.progressBar).toBe(false);
+
+    wrapper.unmount();
+  });
+
+  it('should not show the progress bar if progressBar is false on an individual snackbar', () => {
+    const wrapper = mount(<SnackbarManager progressBar={true} />);
+
+    wrapper.instance().create({
+      message: 'Hello!',
+      progressBar: false
+    });
+    wrapper.update();
+
+    const snackbar = wrapper.find(Snackbar).get(0);
+    expect(snackbar.props.progressBar).toBe(false);
 
     wrapper.unmount();
   });

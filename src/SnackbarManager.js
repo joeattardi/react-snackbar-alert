@@ -88,6 +88,9 @@ export default class SnackbarManager extends React.Component {
               classNames="react-snackbar-alert__snackbar-container">
               <SnackbarContainer animationTimeout={notification.animationTimeout || this.props.animationTimeout}>
                 <Component
+                  progressBar={typeof notification.progressBar !== 'undefined' ? notification.progressBar : this.props.progressBar}
+                  sticky={notification.sticky}
+                  timeout={notification.timeout || this.props.timeout}
                   dismissable={typeof notification.dismissable !== 'undefined' ? notification.dismissable : this.props.dismissable}
                   onDismiss={() => this.remove(notification)}
                   message={notification.message}
@@ -102,15 +105,17 @@ export default class SnackbarManager extends React.Component {
 }
 
 SnackbarManager.defaultProps = {
-  timeout: 3000,
   animationTimeout: 250,
   component: Snackbar,
-  dismissable: false
+  dismissable: false,
+  progressBar: true,
+  timeout: 3000
 };
 
 SnackbarManager.propTypes = {
-  timeout: PropTypes.number,
   animationTimeout: PropTypes.number,
   component: PropTypes.elementType,
-  dismissable: PropTypes.bool
+  dismissable: PropTypes.bool,
+  progressBar: PropTypes.bool,
+  timeout: PropTypes.number
 };

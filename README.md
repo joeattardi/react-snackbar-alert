@@ -60,6 +60,7 @@ The `SnackbarManager` component accepts the following props:
 - `animationTimeout` - The duration of the show and hide animations, in milliseconds (default: 500)
 - `component` - A custom component to use instead of the built-in `Snackbar` component
 - `dismissable` - Whether or not the created snackbars can be manually dismissed by the user
+- `progressBar` - Whether or not to show an animated progress bar showing the time before the snackbar is removed (default: true)
 - `timeout` - The time before a snackbar is removed, in milliseconds (default: 3000)
 
 ### `SnackbarManager.create` Options
@@ -67,7 +68,8 @@ The `SnackbarManager` component accepts the following props:
 The `create` method of `SnackbarManager` accepts an options object, which can have the following properties:
 
 - `animationTimeout` - The duration of the show and hide animations (overrides the timeout in `SnackbarManager`)
-- `data` - Custom data to use when rendering a custom notification
+- `data` - Custom data to use when rendering a custom snackbar
 - `dismissable` - Whether or not this snackbar can be manually dismissed by the user
 - `message` - The message to display
+- `progressBar` - Whether or not to show the progress bar for this snackbar
 - `timeout` - The time before this snackbar is removed (overrides the timeout in `SnackbarManager`)

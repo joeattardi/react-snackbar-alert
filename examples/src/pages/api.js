@@ -38,6 +38,12 @@ export default function ApiPage() {
             <td>Whether or not created snackbars can be manually dismissed by the user</td>
           </tr>
           <tr>
+            <td>progressBar</td>
+            <td>boolean</td>
+            <td>true</td>
+            <td>Whether or not to show an animated progress bar indicating the time before a snackbar is removed</td>
+          </tr>
+          <tr>
             <td>timeout</td>
             <td>number</td>
             <td>3000</td>
@@ -89,13 +95,17 @@ export default function ApiPage() {
             <td>The message to display</td>
           </tr>
           <tr>
+            <td>progressBar</td>
+            <td>boolean</td>
+            <td>Whether or not to show the progress bar for this snackbar</td>
+          </tr>
+          <tr>
             <td>timeout</td>
             <td>number</td>
             <td>The time before this snackbar is automatically removed, in milliseconds</td>
           </tr>
         </tbody>
       </table>
-
     </Layout>
   );
 }
