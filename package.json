@@ -19,6 +19,7 @@
     "type": "git",
     "url": "https://github.com/joeattardi/react-snackbar-alert.git"
   },
+  "homepage": "https://joeattardi.github.io/react-snackbar-alert/",
   "keywords": [
     "react",
     "snackbar",
