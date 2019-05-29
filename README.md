@@ -66,5 +66,6 @@ The `SnackbarManager` component accepts the following props:
 The `create` method of `SnackbarManager` accepts an options object, which can have the following properties:
 
 - `animationTimeout` - The duration of the show and hide animations (overrides the timeout in `SnackbarManager`)
+- `data` - Custom data to use when rendering a custom notification
 - `message` - The message to display
 - `timeout` - The time before this snackbar is removed (overrides the timeout in `SnackbarManager`)
