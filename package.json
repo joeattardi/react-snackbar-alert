@@ -1,10 +1,12 @@
 {
   "name": "react-snackbar-alert",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Simple snackbar-style notifications for React",
   "main": "build/index.js",
   "files": [
-    "build",
+    "build/index.js",
+    "build/Snackbar.js",
+    "build/SnackbarManager.js",
     "styles"
   ],
   "scripts": {
