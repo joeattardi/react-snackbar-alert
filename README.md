@@ -72,4 +72,5 @@ The `create` method of `SnackbarManager` accepts an options object, which can ha
 - `dismissable` - Whether or not this snackbar can be manually dismissed by the user
 - `message` - The message to display
 - `progressBar` - Whether or not to show the progress bar for this snackbar
+- `sticky` - Whether or not this snackbar should be sticky. Sticky snackbars are not automatically removed.
 - `timeout` - The time before this snackbar is removed (overrides the timeout in `SnackbarManager`)
