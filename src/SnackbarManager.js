@@ -53,10 +53,12 @@ export default class SnackbarManager extends React.Component {
         notification
       ]
     }, () => {
-      const timeout = setTimeout(() => {
-        this.remove(notification);
-      }, notification.timeout || this.props.timeout);
-      this.timeouts[notification.key] = timeout;
+      if (!notification.sticky) {
+        const timeout = setTimeout(() => {
+          this.remove(notification);
+        }, notification.timeout || this.props.timeout);
+        this.timeouts[notification.key] = timeout;
+      }
     });
   }
 

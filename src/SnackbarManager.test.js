@@ -79,19 +79,17 @@ describe('SnackbarManager', () => {
     wrapper.unmount();
   });
 
-  it('should pass the animationTimeout, message, and data props to the Snackbar component', () => {
+  it('should pass the message and data props to the Snackbar component', () => {
     const wrapper = mount(<SnackbarManager />);
 
     wrapper.instance().create({
       message: 'Hello!',
-      animationTimeout: 100,
       data: 'foobar'
     });
 
     wrapper.update();
     const snackbar = wrapper.find(Snackbar).get(0);
     expect(snackbar.props.message).toBe('Hello!');
-    expect(snackbar.props.animationTimeout).toBe(100);
     expect(snackbar.props.data).toBe('foobar');
 
     wrapper.unmount();
@@ -115,7 +113,6 @@ describe('SnackbarManager', () => {
     const wrapper = mount(<SnackbarManager component={CustomComponent} />);
 
     wrapper.instance().create({
-      animationTimeout: 100,
       data: 'foobar',
       message: 'Hello!'
     });
@@ -123,7 +120,6 @@ describe('SnackbarManager', () => {
 
     const component = wrapper.find(CustomComponent).get(0);
     expect(component.props).toMatchObject({
-      animationTimeout: 100,
       data: 'foobar',
       message: 'Hello!'
     });
@@ -168,7 +164,7 @@ describe('SnackbarManager', () => {
     wrapper.unmount();
   });
 
-  it.only('should make snackbars dismissable if the prop is set', () => {
+  it('should make snackbars dismissable if the prop is set', () => {
     const wrapper = mount(<SnackbarManager dismissable={true} />);
 
     wrapper.instance().create({ message: 'Hello! '});
@@ -180,8 +176,24 @@ describe('SnackbarManager', () => {
     jest.advanceTimersByTime(250); // the fade-out animation
     wrapper.update();
 
-    const snackbars = wrapper.find(Snackbar);
-    expect(snackbars).toHaveLength(0);
+    expect(wrapper.find(Snackbar)).toHaveLength(0);
+
+    wrapper.unmount();
+  });
+
+  it('should not remove sticky snackbars', () => {
+    const wrapper = mount(<SnackbarManager />);
+
+    wrapper.instance().create({
+      message: 'Hello!',
+      sticky: true
+    });
+    wrapper.update();
+
+    jest.advanceTimersByTime(5250);
+    wrapper.update();
+
+    expect(wrapper.find(Snackbar)).toHaveLength(1);
 
     wrapper.unmount();
   });
