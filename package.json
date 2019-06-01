@@ -15,7 +15,8 @@
     "build:watch": "babel src -d build --watch",
     "clean": "rm -rf build",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "lint": "eslint src"
   },
   "repository": {
     "type": "git",
@@ -38,6 +39,8 @@
     "babel-jest": "^24.8.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.2",
+    "eslint": "^5.16.0",
+    "eslint-plugin-react": "^7.13.0",
     "jest": "^24.8.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

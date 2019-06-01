@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -61,4 +62,17 @@ export default class Snackbar extends React.Component {
 
 Snackbar.defaultProps = {
   progressBar: true
+};
+
+Snackbar.propTypes = {
+  children: PropTypes.node,
+  pauseOnHover: PropTypes.bool,
+  onPause: PropTypes.func,
+  onResume: PropTypes.func,
+  timeout: PropTypes.number,
+  dismissable: PropTypes.bool,
+  message: PropTypes.string,
+  onDismiss: PropTypes.func,
+  sticky: PropTypes.bool,
+  progressBar: PropTypes.bool
 };
