@@ -1,6 +1,6 @@
 import React from 'react';
 
-import BaseExample from '../components/examples/base/BaseExample';
+import DemoExample from '../components/examples/demo/DemoExample';
 
 import Layout from '../components/Layout';
 
@@ -14,14 +14,14 @@ export default function IndexPage() {
       </p>
 
       <h1>Demo</h1>
-      <BaseExample />
+      <DemoExample />
 
       <h1>Features</h1>
       <ul>
         <li>Easy to use</li>
         <li>Notifications can be restyled and extended</li>
         <li>Arbitrary custom data can be specified to create rich, interactive notifications</li>
-        <li>About 5 KB gzipped</li>
+        <li>About 6 KB gzipped</li>
       </ul>
 
       <h1>Requirements</h1>
