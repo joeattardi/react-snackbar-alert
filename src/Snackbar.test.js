@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, shallow, mount } from 'enzyme';
+import { render, mount } from 'enzyme';
 
 import Snackbar from './Snackbar';
 
