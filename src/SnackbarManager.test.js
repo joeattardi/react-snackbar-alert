@@ -213,57 +213,147 @@ describe('SnackbarManager', () => {
     wrapper.unmount();
   });
 
-  it('should show the progress bar if progressBar is true on the SnackbarManager', () => {
-    const wrapper = mount(<SnackbarManager progressBar={true} />);
+  describe('progress bar', () => {
+    it('should show the progress bar if progressBar is true on the SnackbarManager', () => {
+      const wrapper = mount(<SnackbarManager progressBar={true} />);
 
-    wrapper.instance().create({ message: 'Hello!' });
-    wrapper.update();
+      wrapper.instance().create({ message: 'Hello!' });
+      wrapper.update();
 
-    const snackbar = wrapper.find(Snackbar).get(0);
-    expect(snackbar.props.progressBar).toBe(true);
+      const snackbar = wrapper.find(Snackbar).get(0);
+      expect(snackbar.props.progressBar).toBe(true);
 
-    wrapper.unmount();
-  });
-
-  it('should show the progress bar if progressBar is true on an individual snackbar', () => {
-    const wrapper = mount(<SnackbarManager progressBar={false} />);
-
-    wrapper.instance().create({
-      message: 'Hello!',
-      progressBar: true
+      wrapper.unmount();
     });
-    wrapper.update();
 
-    const snackbar = wrapper.find(Snackbar).get(0);
-    expect(snackbar.props.progressBar).toBe(true);
+    it('should show the progress bar if progressBar is true on an individual snackbar', () => {
+      const wrapper = mount(<SnackbarManager progressBar={false} />);
 
-    wrapper.unmount();
-  });
+      wrapper.instance().create({
+        message: 'Hello!',
+        progressBar: true
+      });
+      wrapper.update();
 
-  it('should not show the progress bar if progressBar is false on the SnackbarManager', () => {
-    const wrapper = mount(<SnackbarManager progressBar={false} />);
+      const snackbar = wrapper.find(Snackbar).get(0);
+      expect(snackbar.props.progressBar).toBe(true);
 
-    wrapper.instance().create({ message: 'Hello!' });
-    wrapper.update();
-
-    const snackbar = wrapper.find(Snackbar).get(0);
-    expect(snackbar.props.progressBar).toBe(false);
-
-    wrapper.unmount();
-  });
-
-  it('should not show the progress bar if progressBar is false on an individual snackbar', () => {
-    const wrapper = mount(<SnackbarManager progressBar={true} />);
-
-    wrapper.instance().create({
-      message: 'Hello!',
-      progressBar: false
+      wrapper.unmount();
     });
-    wrapper.update();
 
-    const snackbar = wrapper.find(Snackbar).get(0);
-    expect(snackbar.props.progressBar).toBe(false);
+    it('should not show the progress bar if progressBar is false on the SnackbarManager', () => {
+      const wrapper = mount(<SnackbarManager progressBar={false} />);
 
-    wrapper.unmount();
+      wrapper.instance().create({ message: 'Hello!' });
+      wrapper.update();
+
+      const snackbar = wrapper.find(Snackbar).get(0);
+      expect(snackbar.props.progressBar).toBe(false);
+
+      wrapper.unmount();
+    });
+
+    it('should not show the progress bar if progressBar is false on an individual snackbar', () => {
+      const wrapper = mount(<SnackbarManager progressBar={true} />);
+
+      wrapper.instance().create({
+        message: 'Hello!',
+        progressBar: false
+      });
+      wrapper.update();
+
+      const snackbar = wrapper.find(Snackbar).get(0);
+      expect(snackbar.props.progressBar).toBe(false);
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('pause on hover', () => {
+    it('should pause on hover if pauseOnHover is true on the SnackbarManager', () => {
+      const wrapper = mount(<SnackbarManager pauseOnHover={true} />);
+
+      wrapper.instance().create({ message: 'Hello!' });
+      wrapper.update();
+
+      const snackbar = wrapper.find(Snackbar);
+      snackbar.simulate('mouseenter');
+
+      jest.advanceTimersByTime(3250);
+      wrapper.update();
+
+      expect(wrapper.find(Snackbar)).toHaveLength(1);
+
+      snackbar.simulate('mouseleave');
+      jest.advanceTimersByTime(3250);
+      wrapper.update();
+
+      expect(wrapper.find(Snackbar)).toHaveLength(0);
+
+      wrapper.unmount();
+    });
+
+    it('should pause on hover if pauseOnHover is true on a snackbar', () => {
+      const wrapper = mount(<SnackbarManager pauseOnHover={false} />);
+
+      wrapper.instance().create({
+        message: 'Hello!',
+        pauseOnHover: true
+      });
+      wrapper.update();
+
+      const snackbar = wrapper.find(Snackbar);
+      snackbar.simulate('mouseenter');
+
+      jest.advanceTimersByTime(3250);
+      wrapper.update();
+
+      expect(wrapper.find(Snackbar)).toHaveLength(1);
+
+      snackbar.simulate('mouseleave');
+      jest.advanceTimersByTime(3250);
+      wrapper.update();
+
+      expect(wrapper.find(Snackbar)).toHaveLength(0);
+
+      wrapper.unmount();
+    });
+
+    it('should not pause on hover if pauseOnHover is false on the SnackbarManager', () => {
+      const wrapper = mount(<SnackbarManager pauseOnHover={false} />);
+
+      wrapper.instance().create({ message: 'Hello!' });
+      wrapper.update();
+
+      const snackbar = wrapper.find(Snackbar);
+      snackbar.simulate('mouseenter');
+
+      jest.advanceTimersByTime(3250);
+      wrapper.update();
+
+      expect(wrapper.find(Snackbar)).toHaveLength(0);
+
+      wrapper.unmount();
+    });
+
+    it('should not pause on hover is pauseOnHover is false on a snackbar', () => {
+      const wrapper = mount(<SnackbarManager pauseOnHover={true} />);
+
+      wrapper.instance().create({
+        message: 'Hello!',
+        pauseOnHover: false
+      });
+      wrapper.update();
+
+      const snackbar = wrapper.find(Snackbar);
+      snackbar.simulate('mouseenter');
+
+      jest.advanceTimersByTime(3250);
+      wrapper.update();
+
+      expect(wrapper.find(Snackbar)).toHaveLength(0);
+
+      wrapper.unmount();
+    });
   });
 });

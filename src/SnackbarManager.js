@@ -35,17 +35,25 @@ export default class SnackbarManager extends React.Component {
     super(props);
 
     this.timeouts = {};
+    this.startTimes = {};
+    this.paused = {};
 
     this.state = {
       notifications: []
     };
 
     this.create = this.create.bind(this);
+    this.pause = this.pause.bind(this);
     this.remove = this.remove.bind(this);
+    this.resume = this.resume.bind(this);
   }
 
   create(notification) {
     notification.key = uuidv4();
+
+    if (typeof notification.timeout === 'undefined') {
+      notification.timeout = this.props.timeout;
+    }
 
     this.setState({
       notifications: [
@@ -54,9 +62,10 @@ export default class SnackbarManager extends React.Component {
       ]
     }, () => {
       if (!notification.sticky) {
+        this.startTimes[notification.key] = Date.now();
         const timeout = setTimeout(() => {
           this.remove(notification);
-        }, notification.timeout || this.props.timeout);
+        }, notification.timeout);
         this.timeouts[notification.key] = timeout;
       }
     });
@@ -67,7 +76,34 @@ export default class SnackbarManager extends React.Component {
     this.setState({
       notifications: this.state.notifications.filter(n => n !== notification)
     });
+    
     delete this.timeouts[notification.key];
+    delete this.paused[notification.key];
+    delete this.startTimes[notification.key];
+  }
+
+  pause(notification) {
+    if (!notification.sticky) {
+      clearTimeout(this.timeouts[notification.key]);
+      delete this.timeouts[notification.key];
+
+      let timeout = this.paused[notification.key] || notification.timeout;
+
+      const timeElapsed = Date.now() - this.startTimes[notification.key];
+      const timeRemaining = timeout - timeElapsed;
+      this.paused[notification.key] = timeRemaining;
+    }
+  }
+
+  resume(notification) {
+    if (!notification.sticky) {
+      const timeRemaining = this.paused[notification.key];
+      this.startTimes[notification.key] = Date.now();
+      const timeout = setTimeout(() => {
+        this.remove(notification);
+      }, timeRemaining);
+      this.timeouts[notification.key] = timeout;
+    }
   }
 
   componentWillUnmount() {
@@ -90,9 +126,12 @@ export default class SnackbarManager extends React.Component {
                 <Component
                   progressBar={typeof notification.progressBar !== 'undefined' ? notification.progressBar : this.props.progressBar}
                   sticky={notification.sticky}
-                  timeout={notification.timeout || this.props.timeout}
+                  timeout={notification.timeout}
                   dismissable={typeof notification.dismissable !== 'undefined' ? notification.dismissable : this.props.dismissable}
                   onDismiss={() => this.remove(notification)}
+                  onPause={() => this.pause(notification)}
+                  onResume={() => this.resume(notification)}
+                  pauseOnHover={typeof notification.pauseOnHover !== 'undefined' ? notification.pauseOnHover : this.props.pauseOnHover}
                   message={notification.message}
                   data={notification.data} />
               </SnackbarContainer>
@@ -108,6 +147,7 @@ SnackbarManager.defaultProps = {
   animationTimeout: 250,
   component: Snackbar,
   dismissable: false,
+  pauseOnHover: false,
   progressBar: true,
   timeout: 3000
 };
@@ -116,6 +156,7 @@ SnackbarManager.propTypes = {
   animationTimeout: PropTypes.number,
   component: PropTypes.elementType,
   dismissable: PropTypes.bool,
+  pauseOnHover: PropTypes.bool,
   progressBar: PropTypes.bool,
   timeout: PropTypes.number
 };

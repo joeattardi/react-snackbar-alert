@@ -1,13 +1,17 @@
 # react-snackbar-alert
 Simple snackbar-style notifications for React
 
-![npm](https://img.shields.io/npm/v/react-snackbar-alert.svg)
+[![npm](https://img.shields.io/npm/v/react-snackbar-alert.svg)](https://npmjs.com/package/react-snackbar-alert)
 
 [![Build Status](https://travis-ci.org/joeattardi/react-snackbar-alert.svg?branch=master)](https://travis-ci.org/joeattardi/react-snackbar-alert)
 
 ## Installation
 
     npm install --save react-snackbar-alert
+
+## API & Examples
+
+[https://joeattardi.github.io/react-snackbar-alert/](https://joeattardi.github.io/react-snackbar-alert/)
 
 ## Usage
 
@@ -60,7 +64,8 @@ The `SnackbarManager` component accepts the following props:
 - `animationTimeout` - The duration of the show and hide animations, in milliseconds (default: 500)
 - `component` - A custom component to use instead of the built-in `Snackbar` component
 - `dismissable` - Whether or not the created snackbars can be manually dismissed by the user
-- `progressBar` - Whether or not to show an animated progress bar showing the time before the snackbar is removed (default: true)
+- `pauseOnHover` - Whether or not a snackbar's timeout should be paused when it is hovered over (default: false)
+- `progressBar` - Whether or not to show an animated progress bar showing the time before a snackbar is removed (default: true)
 - `timeout` - The time before a snackbar is removed, in milliseconds (default: 3000)
 
 ### `SnackbarManager.create` Options
@@ -71,6 +76,7 @@ The `create` method of `SnackbarManager` accepts an options object, which can ha
 - `data` - Custom data to use when rendering a custom snackbar
 - `dismissable` - Whether or not this snackbar can be manually dismissed by the user
 - `message` - The message to display
+- `pauseOnHover` - Whether or not to pause this snackbar on hover
 - `progressBar` - Whether or not to show the progress bar for this snackbar
 - `sticky` - Whether or not this snackbar should be sticky. Sticky snackbars are not automatically removed.
 - `timeout` - The time before this snackbar is removed (overrides the timeout in `SnackbarManager`)

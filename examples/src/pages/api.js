@@ -38,6 +38,12 @@ export default function ApiPage() {
             <td>Whether or not created snackbars can be manually dismissed by the user</td>
           </tr>
           <tr>
+            <td>pauseOnHover</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>Whether or not to pause a snackbar's timeout when the mouse is hovered over it</td>
+          </tr>
+          <tr>
             <td>progressBar</td>
             <td>boolean</td>
             <td>true</td>
@@ -93,6 +99,11 @@ export default function ApiPage() {
             <td>message (Required)</td>
             <td>string</td>
             <td>The message to display</td>
+          </tr>
+          <tr>
+            <td>pauseOnHover</td>
+            <td>boolean</td>
+            <td>Whether or not to pause this snackbar's timeout when it is hovered over</td>
           </tr>
           <tr>
             <td>progressBar</td>
