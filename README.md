@@ -3,7 +3,7 @@ Simple snackbar-style notifications for React
 
 [![npm](https://img.shields.io/npm/v/react-snackbar-alert.svg)](https://npmjs.com/package/react-snackbar-alert)
 
-[![Build Status](https://travis-ci.org/joeattardi/react-snackbar-alert.svg?branch=master)](https://travis-ci.org/joeattardi/react-snackbar-alert)
+[![CircleCI](https://circleci.com/gh/joeattardi/react-snackbar-alert.svg?style=svg)](https://circleci.com/gh/joeattardi/react-snackbar-alert)
 
 ## Installation
 
