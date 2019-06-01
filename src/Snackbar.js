@@ -56,7 +56,6 @@ const CloseButton = styled.button`
 `;
 
 const ProgressBar = styled.div`
-  animation-duration: ${props => props.timeout}ms;
   align-self: flex-start;
   width: calc(100% + 0.5em);
   height: 0.25em;
@@ -65,7 +64,7 @@ const ProgressBar = styled.div`
   top: 0.25em;
   left: -0.25em;
   border-bottom-left-radius: 5px;
-  animation: ${progress} 3s linear;
+  animation: ${progress} ${props => props.timeout}ms linear;
 `;
 
 export default class Snackbar extends React.Component {
