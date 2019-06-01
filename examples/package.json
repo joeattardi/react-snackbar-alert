@@ -9,7 +9,7 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public -m \"[ci skip] update examples site\""
   },
   "dependencies": {
     "escape-html": "^1.0.3",
