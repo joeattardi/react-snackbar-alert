@@ -55,20 +55,20 @@ export default class SnackbarManager extends React.Component {
       notification.timeout = this.props.timeout;
     }
 
-    this.setState({
-      notifications: [
-        ...this.state.notifications,
-        notification
-      ]
-    }, () => {
-      if (!notification.sticky) {
-        this.startTimes[notification.key] = Date.now();
-        const timeout = setTimeout(() => {
-          this.remove(notification);
-        }, notification.timeout);
-        this.timeouts[notification.key] = timeout;
+    this.setState(
+      {
+        notifications: [...this.state.notifications, notification]
+      },
+      () => {
+        if (!notification.sticky) {
+          this.startTimes[notification.key] = Date.now();
+          const timeout = setTimeout(() => {
+            this.remove(notification);
+          }, notification.timeout);
+          this.timeouts[notification.key] = timeout;
+        }
       }
-    });
+    );
   }
 
   remove(notification) {
@@ -76,7 +76,7 @@ export default class SnackbarManager extends React.Component {
     this.setState({
       notifications: this.state.notifications.filter(n => n !== notification)
     });
-    
+
     delete this.timeouts[notification.key];
     delete this.paused[notification.key];
     delete this.startTimes[notification.key];
@@ -108,7 +108,7 @@ export default class SnackbarManager extends React.Component {
 
   componentWillUnmount() {
     Object.keys(this.timeouts).forEach(key => {
-      clearTimeout(this.timeouts[key])
+      clearTimeout(this.timeouts[key]);
     });
   }
 
@@ -118,22 +118,42 @@ export default class SnackbarManager extends React.Component {
       <div className="react-snackbar-alert__snackbar-manager">
         <TransitionGroup>
           {this.state.notifications.map(notification => (
-            <CSSTransition 
+            <CSSTransition
               key={notification.key}
-              timeout={notification.animationTimeout || this.props.animationTimeout}
-              classNames="react-snackbar-alert__snackbar-container">
-              <SnackbarContainer animationTimeout={notification.animationTimeout || this.props.animationTimeout}>
+              timeout={
+                notification.animationTimeout || this.props.animationTimeout
+              }
+              classNames="react-snackbar-alert__snackbar-container"
+            >
+              <SnackbarContainer
+                animationTimeout={
+                  notification.animationTimeout || this.props.animationTimeout
+                }
+              >
                 <Component
-                  progressBar={typeof notification.progressBar !== 'undefined' ? notification.progressBar : this.props.progressBar}
+                  progressBar={
+                    typeof notification.progressBar !== 'undefined'
+                      ? notification.progressBar
+                      : this.props.progressBar
+                  }
                   sticky={notification.sticky}
                   timeout={notification.timeout}
-                  dismissable={typeof notification.dismissable !== 'undefined' ? notification.dismissable : this.props.dismissable}
+                  dismissable={
+                    typeof notification.dismissable !== 'undefined'
+                      ? notification.dismissable
+                      : this.props.dismissable
+                  }
                   onDismiss={() => this.remove(notification)}
                   onPause={() => this.pause(notification)}
                   onResume={() => this.resume(notification)}
-                  pauseOnHover={typeof notification.pauseOnHover !== 'undefined' ? notification.pauseOnHover : this.props.pauseOnHover}
+                  pauseOnHover={
+                    typeof notification.pauseOnHover !== 'undefined'
+                      ? notification.pauseOnHover
+                      : this.props.pauseOnHover
+                  }
                   message={notification.message}
-                  data={notification.data} />
+                  data={notification.data}
+                />
               </SnackbarContainer>
             </CSSTransition>
           ))}

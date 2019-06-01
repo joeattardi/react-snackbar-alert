@@ -13,7 +13,7 @@ describe('SnackbarManager', () => {
     wrapper.instance().create({ message: 'Hello!' });
     wrapper.update();
     expect(wrapper.find(Snackbar)).toHaveLength(1);
-    
+
     jest.advanceTimersByTime(3250);
     wrapper.update();
     expect(wrapper.find(Snackbar)).toHaveLength(0);
@@ -52,7 +52,7 @@ describe('SnackbarManager', () => {
 
   it('should use the custom animation timeout on the SnackbarManager', () => {
     const wrapper = mount(<SnackbarManager animationTimeout={100} />);
-    
+
     wrapper.instance().create({
       message: 'Hello!'
     });
@@ -154,14 +154,14 @@ describe('SnackbarManager', () => {
 
   it('should render new snackbars at the bottom', () => {
     const wrapper = mount(<SnackbarManager />);
-    
+
     wrapper.instance().create({ message: 'Message 1' });
     wrapper.instance().create({ message: 'Message 2' });
     wrapper.update();
 
     const snackbars = wrapper.find(Snackbar);
     expect(snackbars.get(0).props.message).toBe('Message 1');
-    expect(snackbars.get(1).props.message).toBe('Message 2');    
+    expect(snackbars.get(1).props.message).toBe('Message 2');
 
     wrapper.unmount();
   });
@@ -169,7 +169,7 @@ describe('SnackbarManager', () => {
   it('should make snackbars dismissable if the prop is set', () => {
     const wrapper = mount(<SnackbarManager dismissable={true} />);
 
-    wrapper.instance().create({ message: 'Hello! '});
+    wrapper.instance().create({ message: 'Hello! ' });
     wrapper.update();
 
     const snackbar = wrapper.find(Snackbar);
@@ -191,7 +191,9 @@ describe('SnackbarManager', () => {
     });
     wrapper.update();
 
-    expect(wrapper.find('button.react-snackbar-alert__snackbar-close')).toHaveLength(1);
+    expect(
+      wrapper.find('button.react-snackbar-alert__snackbar-close')
+    ).toHaveLength(1);
 
     wrapper.unmount();
   });

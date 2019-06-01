@@ -37,24 +37,51 @@ export default class Snackbar extends React.Component {
   }
 
   render() {
-    const { timeout, children, dismissable, message, onDismiss, sticky, progressBar } = this.props;
-    
+    const {
+      timeout,
+      children,
+      dismissable,
+      message,
+      onDismiss,
+      sticky,
+      progressBar
+    } = this.props;
+
     let containerClass = 'react-snackbar-alert__snackbar';
     if (dismissable) {
       containerClass += ' react-snackbar-alert__dismissable';
     }
 
     return (
-      <div className={containerClass} onMouseEnter={this.pause} onMouseLeave={this.resume}>
+      <div
+        className={containerClass}
+        onMouseEnter={this.pause}
+        onMouseLeave={this.resume}
+      >
         <div className="react-snackbar-alert__snackbar-main">
-          <div className="react-snackbar-alert__snackbar-content">{children || message}</div>
-          {dismissable ? <button onClick={onDismiss} className="react-snackbar-alert__snackbar-close">&times;</button> : null}
+          <div className="react-snackbar-alert__snackbar-content">
+            {children || message}
+          </div>
+          {dismissable ? (
+            <button
+              onClick={onDismiss}
+              className="react-snackbar-alert__snackbar-close"
+            >
+              &times;
+            </button>
+          ) : null}
         </div>
-        {!sticky && progressBar ?
+        {!sticky && progressBar ? (
           <ProgressBar
             timeout={timeout}
             className="react-snackbar-alert__snackbar-progress-bar"
-            style={{animationPlayState: this.state.animationPaused ? 'paused' : 'running'}} /> : null}
+            style={{
+              animationPlayState: this.state.animationPaused
+                ? 'paused'
+                : 'running'
+            }}
+          />
+        ) : null}
       </div>
     );
   }

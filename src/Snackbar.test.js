@@ -22,36 +22,52 @@ describe('Snackbar', () => {
   describe('progress bar', () => {
     it('should render the progress bar if the progressBar prop is true', () => {
       const wrapper = render(<Snackbar message="Hello!" progressBar={true} />);
-      expect(wrapper.find('.react-snackbar-alert__snackbar-progress-bar')).toHaveLength(1);
+      expect(
+        wrapper.find('.react-snackbar-alert__snackbar-progress-bar')
+      ).toHaveLength(1);
     });
 
     it('should not render the progress bar if the progressBar prop is false', () => {
       const wrapper = render(<Snackbar message="Hello!" progressBar={false} />);
-      expect(wrapper.find('.react-snackbar-alert__snackbar-progress-bar')).toHaveLength(0);
+      expect(
+        wrapper.find('.react-snackbar-alert__snackbar-progress-bar')
+      ).toHaveLength(0);
     });
 
     it('should not render the progress bar, even if the progressBar prop is true, if the sticky prop is true', () => {
-      const wrapper = render(<Snackbar message="Hello!" progressBar={true} sticky={true} />);
-      expect(wrapper.find('.react-snackbar-alert__snackbar-progress-bar')).toHaveLength(0);
+      const wrapper = render(
+        <Snackbar message="Hello!" progressBar={true} sticky={true} />
+      );
+      expect(
+        wrapper.find('.react-snackbar-alert__snackbar-progress-bar')
+      ).toHaveLength(0);
     });
   });
 
   describe('close button', () => {
     it('should render the close button if the dismissable prop is true', () => {
       const wrapper = render(<Snackbar message="Hello!" dismissable={true} />);
-      expect(wrapper.find('button.react-snackbar-alert__snackbar-close')).toHaveLength(1);
+      expect(
+        wrapper.find('button.react-snackbar-alert__snackbar-close')
+      ).toHaveLength(1);
     });
 
     it('should not render the close button if the dismissable prop is false', () => {
       const wrapper = render(<Snackbar message="Hello!" dismissable={false} />);
-      expect(wrapper.find('button.react-snackbar-alert__snackbar-close')).toHaveLength(0);
+      expect(
+        wrapper.find('button.react-snackbar-alert__snackbar-close')
+      ).toHaveLength(0);
     });
 
     it('should call the onDismiss callback when the close button is clicked', () => {
       const onDismiss = jest.fn();
-      const wrapper = shallow(<Snackbar message="Hello!" dismissable={true} onDismiss={onDismiss} />);
+      const wrapper = shallow(
+        <Snackbar message="Hello!" dismissable={true} onDismiss={onDismiss} />
+      );
 
-      wrapper.find('button.react-snackbar-alert__snackbar-close').simulate('click');
+      wrapper
+        .find('button.react-snackbar-alert__snackbar-close')
+        .simulate('click');
       expect(onDismiss.mock.calls.length).toBe(1);
     });
   });
