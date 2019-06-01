@@ -5,6 +5,12 @@ Simple snackbar-style notifications for React
 
 [![CircleCI](https://circleci.com/gh/joeattardi/react-snackbar-alert.svg?style=svg)](https://circleci.com/gh/joeattardi/react-snackbar-alert)
 
+## Prerequisites
+
+React Snackbar Alert requires React 16 and styled-components 4 as peer dependencies:
+
+    npm install --save react react-dom styled-components
+
 ## Installation
 
     npm install --save react-snackbar-alert
