@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, shallow } from 'enzyme';
+import { render, shallow, mount } from 'enzyme';
 
 import Snackbar from './Snackbar';
 
@@ -47,28 +47,24 @@ describe('Snackbar', () => {
   describe('close button', () => {
     it('should render the close button if the dismissable prop is true', () => {
       const wrapper = render(<Snackbar message="Hello!" dismissable={true} />);
-      expect(
-        wrapper.find('button.react-snackbar-alert__snackbar-close')
-      ).toHaveLength(1);
+      expect(wrapper.find('button')).toHaveLength(1);
     });
 
     it('should not render the close button if the dismissable prop is false', () => {
       const wrapper = render(<Snackbar message="Hello!" dismissable={false} />);
-      expect(
-        wrapper.find('button.react-snackbar-alert__snackbar-close')
-      ).toHaveLength(0);
+      expect(wrapper.find('button')).toHaveLength(0);
     });
 
-    it('should call the onDismiss callback when the close button is clicked', () => {
+    it.only('should call the onDismiss callback when the close button is clicked', () => {
       const onDismiss = jest.fn();
-      const wrapper = shallow(
+      const wrapper = mount(
         <Snackbar message="Hello!" dismissable={true} onDismiss={onDismiss} />
       );
 
-      wrapper
-        .find('button.react-snackbar-alert__snackbar-close')
-        .simulate('click');
+      wrapper.find('button').simulate('click');
       expect(onDismiss.mock.calls.length).toBe(1);
+
+      wrapper.unmount();
     });
   });
 });

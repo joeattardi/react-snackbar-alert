@@ -22,7 +22,6 @@ export default function GettingStartedPage() {
       <h2>Add to your app</h2>
       <ul>
         <li>Import the SnackbarManager component</li>
-        <li>Import the CSS styles</li>
         <li>
           Add the <code>&lt;SnackbarManager /&gt;</code> to your component and
           save it to a ref

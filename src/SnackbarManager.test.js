@@ -191,9 +191,7 @@ describe('SnackbarManager', () => {
     });
     wrapper.update();
 
-    expect(
-      wrapper.find('button.react-snackbar-alert__snackbar-close')
-    ).toHaveLength(1);
+    expect(wrapper.find('button')).toHaveLength(1);
 
     wrapper.unmount();
   });

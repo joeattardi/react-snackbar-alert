@@ -1,9 +1,71 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const progress = keyframes`
+  0% {
+    width: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  99% {
+    border-bottom-right-radius: 0;
+  }
+
+  100% {
+    width: calc(100% + 0.5em);
+    border-bottom-right-radius: 5px;
+  }
+`;
+
+const Container = styled.div`
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  color: #ffffff;
+  min-height: 3em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.25em;
+  text-align: center;
+  margin-bottom: 0.5em;
+`;
+
+const Main = styled.div`
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+`;
+
+const Content = styled.div`
+  flex-grow: 1;
+  margin-left: ${props => (props.dismissable ? '1.5em' : '0')};
+`;
+
+const CloseButton = styled.button`
+  background: transparent;
+  padding: 0;
+  font-size: 1.5em;
+  margin-top: -0.25em;
+  outline: none;
+  width: 1em;
+`;
 
 const ProgressBar = styled.div`
   animation-duration: ${props => props.timeout}ms;
+  align-self: flex-start;
+  width: calc(100% + 0.5em);
+  height: 0.25em;
+  background: rgba(255, 255, 255, 0.2);
+  position: relative;
+  top: 0.25em;
+  left: -0.25em;
+  border-bottom-left-radius: 5px;
+  animation: ${progress} 3s linear;
 `;
 
 export default class Snackbar extends React.Component {
@@ -47,30 +109,14 @@ export default class Snackbar extends React.Component {
       progressBar
     } = this.props;
 
-    let containerClass = 'react-snackbar-alert__snackbar';
-    if (dismissable) {
-      containerClass += ' react-snackbar-alert__dismissable';
-    }
-
     return (
-      <div
-        className={containerClass}
-        onMouseEnter={this.pause}
-        onMouseLeave={this.resume}
-      >
-        <div className="react-snackbar-alert__snackbar-main">
-          <div className="react-snackbar-alert__snackbar-content">
-            {children || message}
-          </div>
+      <Container onMouseEnter={this.pause} onMouseLeave={this.resume}>
+        <Main>
+          <Content dismissable={dismissable}>{children || message}</Content>
           {dismissable ? (
-            <button
-              onClick={onDismiss}
-              className="react-snackbar-alert__snackbar-close"
-            >
-              &times;
-            </button>
+            <CloseButton onClick={onDismiss}>&times;</CloseButton>
           ) : null}
-        </div>
+        </Main>
         {!sticky && progressBar ? (
           <ProgressBar
             timeout={timeout}
@@ -82,7 +128,7 @@ export default class Snackbar extends React.Component {
             }}
           />
         ) : null}
-      </div>
+      </Container>
     );
   }
 }

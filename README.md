@@ -21,19 +21,17 @@ React Snackbar Alert requires React 16 and styled-components 4 as peer dependenc
 
 ## Usage
 
-The basic usage is as follows:
+Snackbar notifications in 3 easy steps:
 
 1. Import the `SnackbarManager` component
-2. Import the CSS
-3. Add the `SnackbarManager` component to your application's `render` method and save it to a ref
-4. Call `create` on the ref to create snackbar alerts
+2. Add the `SnackbarManager` component to your application's `render` method and save it to a ref
+3. Call `create` on the ref to create snackbar alerts
 
 ### Example
 
 ```javascript
   import React from 'react';
   import { SnackbarManager } from 'react-snackbar-alert';
-  import 'react-snackbar-alert/styles/react-snackbar-alert.css';
 
   export default class App extends React.Component {
     constructor(props) {

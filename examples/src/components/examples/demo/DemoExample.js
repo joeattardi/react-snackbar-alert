@@ -2,7 +2,6 @@ import Prism from 'prismjs';
 import React from 'react';
 
 import { SnackbarManager } from 'react-snackbar-alert';
-import 'react-snackbar-alert/styles/react-snackbar-alert.css';
 
 export default class DemoExample extends React.Component {
   constructor(props) {

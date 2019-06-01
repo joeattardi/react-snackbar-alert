@@ -6,6 +6,14 @@ import uuidv4 from 'uuid/v4';
 
 import Snackbar from './Snackbar';
 
+const Container = styled.div`
+  position: fixed;
+  width: 20em;
+  bottom: 0;
+  left: calc(50% - 10em);
+  z-index: 10000;
+`;
+
 const SnackbarContainer = styled.div`
   &.react-snackbar-alert__snackbar-container-enter {
     opacity: 0;
@@ -115,7 +123,7 @@ export default class SnackbarManager extends React.Component {
   render() {
     const { component: Component } = this.props;
     return (
-      <div className="react-snackbar-alert__snackbar-manager">
+      <Container>
         <TransitionGroup>
           {this.state.notifications.map(notification => (
             <CSSTransition
@@ -158,7 +166,7 @@ export default class SnackbarManager extends React.Component {
             </CSSTransition>
           ))}
         </TransitionGroup>
-      </div>
+      </Container>
     );
   }
 }

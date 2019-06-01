@@ -1,7 +1,6 @@
 import React, { useRef } from 'react';
 
 import { SnackbarManager } from 'react-snackbar-alert';
-import 'react-snackbar-alert/styles/react-snackbar-alert.css';
 
 import CustomSnackbarComponent from './CustomSnackbarComponent';
 
