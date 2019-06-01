@@ -19,7 +19,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
-    "react-snackbar-alert": "^1.6.0",
+    "react-snackbar-alert": "^1.7.0",
     "react-tabs": "^3.0.0",
     "styled-components": "^4.2.0"
   },
