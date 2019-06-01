@@ -1,9 +1,8 @@
 {
-  "name": "gatsby-starter-hello-world",
+  "name": "react-snackbar-alert-examples",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "description": "Docs and examples for react-snackbar-alert",
   "version": "0.1.0",
-  "license": "MIT",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
@@ -20,19 +19,12 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
-    "react-snackbar-alert": "^1.5.0",
+    "react-snackbar-alert": "^1.6.0",
     "react-tabs": "^3.0.0",
     "styled-components": "^4.2.0"
   },
   "devDependencies": {
     "gh-pages": "^2.0.1",
     "prettier": "^1.17.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
   }
 }
