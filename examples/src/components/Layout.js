@@ -1,7 +1,7 @@
 import Prism from 'prismjs';
 import 'prismjs/themes/prism.css';
 import 'prismjs/components/prism-jsx.min';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 
 import Footer from './Footer';
@@ -17,14 +17,16 @@ export default function Layout({ children, title }) {
     Prism.highlightAll();
   });
 
+  const [menuVisible, setMenuVisible] = useState(false);
+
   return (
     <div>
       <Helmet>
         <title>{title ? `${title} |` : ''} React Snackbar Alert</title>
       </Helmet>
-      <Header />
+      <Header onMenuToggle={() => setMenuVisible(!menuVisible)} />
       <div id={styles.body}>
-        <Navigation />
+        <Navigation visible={menuVisible} />
         <main id={styles.main}>
           <div id={styles.contentContainer}>
             <h1>{title}</h1>

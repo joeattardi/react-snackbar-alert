@@ -35,3 +35,18 @@
 #sidebar ul a:hover {
   text-decoration: underline;
 }
+
+@media (max-width: 700px) {
+  #sidebar {
+    position: absolute;
+    transition: left 0.25s ease-out;
+  }
+
+  #sidebar.closed {
+    left: -17em;
+  }
+
+  #sidebar.open {
+    left: 0;
+  }
+}

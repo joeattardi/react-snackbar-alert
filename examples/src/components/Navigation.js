@@ -3,9 +3,9 @@ import React from 'react';
 
 import styles from './Navigation.module.css';
 
-export default function Navigation() {
+export default function Navigation({ visible }) {
   return (
-    <nav id={styles.sidebar}>
+    <nav id={styles.sidebar} className={visible ? styles.open : styles.closed}>
       <ul>
         <li><Link to="/" activeClassName={styles.active}>Home</Link></li>
         <li><Link to="/gettingStarted/" activeClassName={styles.active}>Getting Started</Link></li>
