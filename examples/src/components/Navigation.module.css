@@ -3,6 +3,7 @@
   padding: 0.5em;
   width: 16em;
   min-width: 16em;
+  min-height: calc(100vh - 4em);
 }
 
 #sidebar h2 {
