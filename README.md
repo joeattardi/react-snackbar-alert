@@ -69,6 +69,7 @@ The `SnackbarManager` component accepts the following props:
 - `component` - A custom component to use instead of the built-in `Snackbar` component
 - `dismissable` - Whether or not the created snackbars can be manually dismissed by the user
 - `pauseOnHover` - Whether or not a snackbar's timeout should be paused when it is hovered over (default: false)
+- `position` - The position on screen to show the snackbars. One of `top`, `top-left`, `top-right`, `bottom`, `bottom-left`, `bottom-right` (default: bottom)
 - `progressBar` - Whether or not to show an animated progress bar showing the time before a snackbar is removed (default: true)
 - `timeout` - The time before a snackbar is removed, in milliseconds (default: 3000)
 
