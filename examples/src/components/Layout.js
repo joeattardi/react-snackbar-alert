@@ -23,6 +23,10 @@ export default function Layout({ children, title }) {
     <div>
       <Helmet>
         <title>{title ? `${title} |` : ''} React Snackbar Alert</title>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"
+        />
       </Helmet>
       <Header onMenuToggle={() => setMenuVisible(!menuVisible)} />
       <div id={styles.body}>
