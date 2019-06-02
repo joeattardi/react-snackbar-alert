@@ -14,6 +14,7 @@ export default function Navigation() {
       <h2>Examples</h2>
       <ul>
         <li><Link to="/examples/base/" activeClassName={styles.active}>Base</Link></li>
+        <li><Link to="/examples/position/" activeClassName={styles.active}>Position</Link></li>
         <li><Link to="/examples/pauseOnHover/" activeClassName={styles.active}>Pause on Hover</Link></li>
         <li><Link to="/examples/noProgressBar/" activeClassName={styles.active}>No Progress Bar</Link></li>
         <li><Link to="/examples/dismissable/" activeClassName={styles.active}>Dismissable</Link></li>

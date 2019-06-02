@@ -356,4 +356,60 @@ describe('SnackbarManager', () => {
       wrapper.unmount();
     });
   });
+
+  describe('position', () => {
+    function testPosition(position, expectedFirst) {
+      const wrapper = mount(<SnackbarManager position={position} />);
+
+      wrapper.instance().create({ message: 'foo' });
+      wrapper.instance().create({ message: 'bar' });
+      wrapper.update();
+
+      expect(
+        wrapper
+          .find(Snackbar)
+          .first()
+          .text()
+      ).toBe(expectedFirst);
+
+      wrapper.unmount();
+    }
+
+    it('should put new snackbars at the top when the position is "top"', () => {
+      testPosition('top', 'bar');
+    });
+
+    it('should put new snackbars at the top when the position is "top-left"', () => {
+      testPosition('top-left', 'bar');
+    });
+
+    it('should put new snackbars at the top when the position is "top-right"', () => {
+      testPosition('top-right', 'bar');
+    });
+
+    it('should put new snackbars at the bottom when the position is "bottom"', () => {
+      testPosition('bottom', 'foo');
+    });
+
+    it('should put new snackbars at the bottom when the position is "bottom-left"', () => {
+      testPosition('bottom-left', 'foo');
+    });
+
+    it('should put new snackbars at the bottom when the position is "bottom-right"', () => {
+      testPosition('bottom-right', 'foo');
+    });
+
+    it('should pass the position prop to each snackbar', () => {
+      const wrapper = mount(<SnackbarManager position="top" />);
+
+      wrapper.instance().create({ message: 'foo' });
+      wrapper.update();
+
+      wrapper.update();
+      const snackbar = wrapper.find(Snackbar).get(0);
+      expect(snackbar.props.position).toBe('top');
+
+      wrapper.unmount();
+    });
+  });
 });

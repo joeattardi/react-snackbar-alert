@@ -6,11 +6,26 @@ import uuidv4 from 'uuid/v4';
 
 import Snackbar from './Snackbar';
 
+function getLeft(position) {
+  switch (position) {
+    case 'top':
+    case 'bottom':
+      return 'calc(50% - 10em)';
+    case 'top-left':
+    case 'bottom-left':
+      return '0.5em';
+    case 'top-right':
+    case 'bottom-right':
+      return 'calc(100vw - 20.5em)';
+  }
+}
+
 const Container = styled.div`
   position: fixed;
   width: 20em;
-  bottom: 0;
-  left: calc(50% - 10em);
+  top: ${props => (props.position.indexOf('top') === 0 ? 0 : 'inherit')};
+  bottom: ${props => (props.position.indexOf('bottom') === 0 ? 0 : 'inherit')};
+  left: ${props => getLeft(props.position)};
   z-index: 10000;
 `;
 
@@ -121,11 +136,17 @@ export default class SnackbarManager extends React.Component {
   }
 
   render() {
-    const { component: Component } = this.props;
+    const { component: Component, position } = this.props;
+
+    const orderedNotifications =
+      position.indexOf('top') === 0
+        ? [...this.state.notifications].reverse()
+        : this.state.notifications;
+
     return (
-      <Container>
+      <Container position={position}>
         <TransitionGroup>
-          {this.state.notifications.map(notification => (
+          {orderedNotifications.map(notification => (
             <CSSTransition
               key={notification.key}
               timeout={
@@ -161,6 +182,7 @@ export default class SnackbarManager extends React.Component {
                   }
                   message={notification.message}
                   data={notification.data}
+                  position={position}
                 />
               </SnackbarContainer>
             </CSSTransition>
@@ -176,6 +198,7 @@ SnackbarManager.defaultProps = {
   component: Snackbar,
   dismissable: false,
   pauseOnHover: false,
+  position: 'bottom',
   progressBar: true,
   timeout: 3000
 };
@@ -186,5 +209,13 @@ SnackbarManager.propTypes = {
   dismissable: PropTypes.bool,
   pauseOnHover: PropTypes.bool,
   progressBar: PropTypes.bool,
+  position: PropTypes.oneOf([
+    'top',
+    'top-left',
+    'top-right',
+    'bottom',
+    'bottom-left',
+    'bottom-right'
+  ]),
   timeout: PropTypes.number
 };

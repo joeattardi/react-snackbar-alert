@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 
 import { SnackbarManager } from 'react-snackbar-alert';
 
-export default function BaseExample() {
+export default function TopExample() {
   const snackbarManager = useRef();
 
   function showSnackbar() {
@@ -13,7 +13,7 @@ export default function BaseExample() {
 
   return (
     <div>
-      <SnackbarManager ref={snackbarManager} />
+      <SnackbarManager ref={snackbarManager} position="top" />
       <main>
         <button onClick={showSnackbar}>Show Snackbar</button>
       </main>
