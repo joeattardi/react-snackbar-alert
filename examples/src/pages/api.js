@@ -44,6 +44,23 @@ export default function ApiPage() {
             <td>Whether or not to pause a snackbar's timeout when the mouse is hovered over it</td>
           </tr>
           <tr>
+            <td>position</td>
+            <td>
+              One of:
+
+              <ul>
+                <li>top</li>
+                <li>top-left</li>
+                <li>top-right</li>
+                <li>bottom</li>
+                <li>bottom-left</li>
+                <li>bottom-right</li>
+              </ul>
+            </td>
+            <td>"bottom"</td>
+            <td>The position on screen to show the snackbars</td>
+          </tr>
+          <tr>
             <td>progressBar</td>
             <td>boolean</td>
             <td>true</td>

@@ -29,7 +29,9 @@ const Container = styled.div`
   align-items: center;
   padding: 0.25em;
   text-align: center;
-  margin-bottom: 0.5em;
+  margin-bottom: ${props =>
+    props.position.indexOf('bottom') === 0 ? '0.5em' : 0};
+  margin-top: ${props => (props.position.indexOf('top') === 0 ? '0.5em' : 0)};
 `;
 
 const Main = styled.div`
@@ -105,11 +107,16 @@ export default class Snackbar extends React.Component {
       message,
       onDismiss,
       sticky,
-      progressBar
+      progressBar,
+      position
     } = this.props;
 
     return (
-      <Container onMouseEnter={this.pause} onMouseLeave={this.resume}>
+      <Container
+        position={position}
+        onMouseEnter={this.pause}
+        onMouseLeave={this.resume}
+      >
         <Main>
           <Content dismissable={dismissable}>{children || message}</Content>
           {dismissable ? (
@@ -133,7 +140,8 @@ export default class Snackbar extends React.Component {
 }
 
 Snackbar.defaultProps = {
-  progressBar: true
+  progressBar: true,
+  position: 'bottom'
 };
 
 Snackbar.propTypes = {
@@ -146,5 +154,13 @@ Snackbar.propTypes = {
   message: PropTypes.string,
   onDismiss: PropTypes.func,
   sticky: PropTypes.bool,
-  progressBar: PropTypes.bool
+  progressBar: PropTypes.bool,
+  position: PropTypes.oneOf([
+    'top',
+    'top-left',
+    'top-right',
+    'bottom',
+    'bottom-left',
+    'bottom-right'
+  ])
 };
