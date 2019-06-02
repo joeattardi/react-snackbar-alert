@@ -39,14 +39,17 @@
 @media (max-width: 700px) {
   #sidebar {
     position: absolute;
-    transition: left 0.25s ease-out;
+    transition: all 0.25s ease-out;
+    min-height: inherit;
   }
 
   #sidebar.closed {
     left: -17em;
+    opacity: 0;
   }
 
   #sidebar.open {
     left: 0;
+    opacity: 1;
   }
 }

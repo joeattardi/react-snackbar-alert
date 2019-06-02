@@ -11,15 +11,17 @@ export default function Header({ onMenuToggle }) {
         </button>{' '}
         🍫 React Snackbar Alert
       </h1>
-      <div className={styles.headerLink}>
-        <a href="https://github.com/joeattardi/react-snackbar-alert">
-          <img src="https://img.shields.io/github/stars/joeattardi/react-snackbar-alert.svg?style=social" />
-        </a>
-      </div>
-      <div className={styles.headerLink}>
-        <a href="https://npmjs.com/package/react-snackbar-alert">
-          <img src="https://img.shields.io/npm/v/react-snackbar-alert.svg" />
-        </a>
+      <div id={styles.headerLinks}>
+        <div>
+          <a href="https://github.com/joeattardi/react-snackbar-alert">
+            <img src="https://img.shields.io/github/stars/joeattardi/react-snackbar-alert.svg?style=social" />
+          </a>
+        </div>
+        <div>
+          <a href="https://npmjs.com/package/react-snackbar-alert">
+            <img src="https://img.shields.io/npm/v/react-snackbar-alert.svg" />
+          </a>
+        </div>
       </div>
     </header>
   );
