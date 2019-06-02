@@ -11,11 +11,14 @@ export default function CustomComponentExample() {
     snackbarManager.current.create({
       message: 'Hello Snackbar!'
     });
-  } 
+  }
 
   return (
     <div>
-      <SnackbarManager ref={snackbarManager} component={CustomSnackbarComponent} />
+      <SnackbarManager
+        ref={snackbarManager}
+        component={CustomSnackbarComponent}
+      />
       <main>
         <button onClick={showSnackbar}>Show Snackbar</button>
       </main>

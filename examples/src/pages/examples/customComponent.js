@@ -13,9 +13,11 @@ export default function CustomComponentPage() {
   return (
     <Layout title="Custom Snackbar Component">
       <p>
-        For greater customization of the snackbar component, a custom component can be used.
-        Create your custom snackbar component and pass it as the <code>component</code> prop to the <code>SnackbarManager</code>.
-        The component will receive a <code>message</code> prop with the message to display.
+        For greater customization of the snackbar component, a custom component
+        can be used. Create your custom snackbar component and pass it as the{' '}
+        <code>component</code> prop to the <code>SnackbarManager</code>. The
+        component will receive a <code>message</code> prop with the message to
+        display.
       </p>
 
       <CustomComponentExample />
@@ -25,8 +27,12 @@ export default function CustomComponentPage() {
           <Tab>CustomComponentExample.js</Tab>
           <Tab>CustomSnackbarComponent.js</Tab>
         </TabList>
-        <TabPanel><SourceFile src={customComponentExampleSrc} /></TabPanel>
-        <TabPanel><SourceFile src={customSnackbarComponentSrc} /></TabPanel>
+        <TabPanel>
+          <SourceFile src={customComponentExampleSrc} />
+        </TabPanel>
+        <TabPanel>
+          <SourceFile src={customSnackbarComponentSrc} />
+        </TabPanel>
       </Tabs>
     </Layout>
   );

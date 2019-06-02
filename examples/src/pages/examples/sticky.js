@@ -10,11 +10,14 @@ import SourceFile from '../../components/SourceFile';
 export default function StickyPage() {
   return (
     <Layout title="Sticky Snackbars">
-      <p>A snackbar can be sticky, which means that it is not automatically removed.</p>
+      <p>
+        A snackbar can be sticky, which means that it is not automatically
+        removed.
+      </p>
 
       <p>
-        It is recommended that sticky snackbars are also user-dismissable, otherwise the
-        snackbar can never be removed.
+        It is recommended that sticky snackbars are also user-dismissable,
+        otherwise the snackbar can never be removed.
       </p>
 
       <StickyExample />

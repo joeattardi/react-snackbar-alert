@@ -11,7 +11,7 @@ export default function StickyExample() {
       sticky: true,
       dismissable: true
     });
-  } 
+  }
 
   return (
     <div>

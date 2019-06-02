@@ -9,7 +9,7 @@ export default function DismissableExample() {
     snackbarManager.current.create({
       message: 'Hello Snackbar!'
     });
-  } 
+  }
 
   return (
     <div>

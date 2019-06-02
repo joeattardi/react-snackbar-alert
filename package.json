@@ -17,7 +17,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "eslint src",
-    "prettify": "prettier --write 'src/*.js'"
+    "prettify": "prettier --write 'src/*.js' 'examples/src/**/*.js'"
   },
   "repository": {
     "type": "git",
@@ -69,6 +69,10 @@
   },
   "lint-staged": {
     "src/*.js": [
+      "prettier --write",
+      "git add"
+    ],
+    "examples/src/**/*.js": [
       "prettier --write",
       "git add"
     ]

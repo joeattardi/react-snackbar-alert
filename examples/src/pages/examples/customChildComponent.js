@@ -13,13 +13,16 @@ export default function CustomChildComponentPage() {
   return (
     <Layout title="Extending the Snackbar Component">
       <p>
-        You can also extend the default <code>Snackbar</code> component.
-        This allows you to keep the default styling and animation, but also add your own child content to the snackbar.
+        You can also extend the default <code>Snackbar</code> component. This
+        allows you to keep the default styling and animation, but also add your
+        own child content to the snackbar.
       </p>
 
       <p>
-        To extend the default component, import the <code>Snackbar</code> component and use it in your custom component.
-        Make sure to pass all received props along to the <code>Snackbar</code> component, or else the animations won't work.
+        To extend the default component, import the <code>Snackbar</code>{' '}
+        component and use it in your custom component. Make sure to pass all
+        received props along to the <code>Snackbar</code> component, or else the
+        animations won't work.
       </p>
 
       <CustomChildComponentExample />
@@ -29,8 +32,12 @@ export default function CustomChildComponentPage() {
           <Tab>CustomChildComponentExample.js</Tab>
           <Tab>CustomSnackbarComponent.js</Tab>
         </TabList>
-        <TabPanel><SourceFile src={customChildComponentExampleSrc} /></TabPanel>
-        <TabPanel><SourceFile src={customSnackbarComponentSrc} /></TabPanel>
+        <TabPanel>
+          <SourceFile src={customChildComponentExampleSrc} />
+        </TabPanel>
+        <TabPanel>
+          <SourceFile src={customSnackbarComponentSrc} />
+        </TabPanel>
       </Tabs>
     </Layout>
   );

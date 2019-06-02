@@ -10,7 +10,7 @@ export default function CustomTimeoutExample() {
       message: '5 second timeout!',
       timeout: 5000
     });
-  } 
+  }
 
   return (
     <div>

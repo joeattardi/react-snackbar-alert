@@ -10,11 +10,21 @@ import SourceFile from '../../components/SourceFile';
 export default function PauseOnHoverPage() {
   return (
     <Layout title="Pause on Hover">
-      <p>Pause on Hover will pause a snackbar's timeout when the mouse is hovered over it. This is disabled by default. It can be enabled in one of two ways:</p>
+      <p>
+        Pause on Hover will pause a snackbar's timeout when the mouse is hovered
+        over it. This is disabled by default. It can be enabled in one of two
+        ways:
+      </p>
 
       <ul>
-        <li>Setting the <code>pauseOnHover</code> prop on the <code>SnackbarManager</code> for all snackbars</li>
-        <li>Setting the <code>pauseOnHover</code> property on the passed snackbar object for a specific snackbar</li>
+        <li>
+          Setting the <code>pauseOnHover</code> prop on the{' '}
+          <code>SnackbarManager</code> for all snackbars
+        </li>
+        <li>
+          Setting the <code>pauseOnHover</code> property on the passed snackbar
+          object for a specific snackbar
+        </li>
       </ul>
 
       <PauseOnHoverExample />

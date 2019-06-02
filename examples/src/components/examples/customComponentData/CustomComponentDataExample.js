@@ -14,11 +14,14 @@ export default function CustomComponentDataExample() {
       },
       message: '⚠️ Connection Error'
     });
-  } 
+  }
 
   return (
     <div>
-      <SnackbarManager ref={snackbarManager} component={CustomSnackbarComponent} />
+      <SnackbarManager
+        ref={snackbarManager}
+        component={CustomSnackbarComponent}
+      />
       <main>
         <button onClick={showSnackbar}>Show Snackbar</button>
       </main>

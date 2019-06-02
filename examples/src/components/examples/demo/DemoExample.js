@@ -88,7 +88,10 @@ export default class DemoExample extends React.Component {
   render() {
     return (
       <div>
-        <SnackbarManager ref={this.snackbarManager} position={this.state.position} />
+        <SnackbarManager
+          ref={this.snackbarManager}
+          position={this.state.position}
+        />
         <main>
           <OptionsContainer>
             <OptionsSection>

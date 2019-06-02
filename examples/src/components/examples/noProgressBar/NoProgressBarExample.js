@@ -9,7 +9,7 @@ export default function NoProgressBarExample() {
     snackbarManager.current.create({
       message: 'Hello Snackbar!'
     });
-  } 
+  }
 
   return (
     <div>

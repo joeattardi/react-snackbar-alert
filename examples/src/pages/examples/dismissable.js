@@ -11,14 +11,21 @@ export default function BasePage() {
   return (
     <Layout title="Dismissable">
       <p>
-        Snackbar notifications will automatically disappear after the timeout has passed. They can also, however,
-        be configured so that they can be manually dismissed before the timeout passes. This can be done in one of two
-        ways:
+        Snackbar notifications will automatically disappear after the timeout
+        has passed. They can also, however, be configured so that they can be
+        manually dismissed before the timeout passes. This can be done in one of
+        two ways:
       </p>
 
       <ul>
-        <li>Setting the <code>dismissable</code> prop on the <code>SnackbarManager</code> (to make all snackbars dismissable)</li>
-        <li>Setting the <code>dismissable</code> property on the passed snackbar object (to make only that snackbar dismissable)</li>
+        <li>
+          Setting the <code>dismissable</code> prop on the{' '}
+          <code>SnackbarManager</code> (to make all snackbars dismissable)
+        </li>
+        <li>
+          Setting the <code>dismissable</code> property on the passed snackbar
+          object (to make only that snackbar dismissable)
+        </li>
       </ul>
 
       <DismissableExample />

@@ -10,11 +10,21 @@ import SourceFile from '../../components/SourceFile';
 export default function BasePage() {
   return (
     <Layout title="No Progress Bar">
-      <p>By default, a progress bar is shown to indicate the time before the snackbar is removed. This can be done in one of two ways:</p>
+      <p>
+        By default, a progress bar is shown to indicate the time before the
+        snackbar is removed. This can be done in one of two ways:
+      </p>
 
       <ul>
-        <li>Setting the <code>progressBar</code> prop on the <code>SnackbarManager</code> to <code>false</code> to disable for all snackbars</li>
-        <li>Setting the <code>progressBar</code> property on the passed snackbar object to <code>false</code> to disable for a specific snackbar</li>
+        <li>
+          Setting the <code>progressBar</code> prop on the{' '}
+          <code>SnackbarManager</code> to <code>false</code> to disable for all
+          snackbars
+        </li>
+        <li>
+          Setting the <code>progressBar</code> property on the passed snackbar
+          object to <code>false</code> to disable for a specific snackbar
+        </li>
       </ul>
 
       <NoProgressBarExample />

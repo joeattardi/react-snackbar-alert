@@ -9,7 +9,7 @@ export default function CustomAnimationTimeoutExample() {
     snackbarManager.current.create({
       message: 'Custom animation timeout!'
     });
-  } 
+  }
 
   return (
     <div>
