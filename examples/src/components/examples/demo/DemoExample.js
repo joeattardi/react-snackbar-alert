@@ -92,7 +92,7 @@ export default class DemoExample extends React.Component {
           ref={this.snackbarManager}
           position={this.state.position}
         />
-        <main>
+        <div>
           <OptionsContainer>
             <OptionsSection>
               <h3>Snackbar Options</h3>
@@ -196,7 +196,7 @@ export default function DemoExample() {
 }
           `}</code>
           </pre>
-        </main>
+        </div>
       </div>
     );
   }

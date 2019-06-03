@@ -31,13 +31,13 @@ export default function Layout({ children, title }) {
       <Header onMenuToggle={() => setMenuVisible(!menuVisible)} />
       <div id={styles.body}>
         <Navigation visible={menuVisible} />
-        <main id={styles.main}>
+        <div id={styles.main}>
           <div id={styles.contentContainer}>
             <h1>{title}</h1>
             {children}
           </div>
           <Footer />
-        </main>
+        </div>
       </div>
     </div>
   );

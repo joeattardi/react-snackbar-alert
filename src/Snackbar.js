@@ -24,6 +24,7 @@ const Container = styled.div`
   color: #ffffff;
   min-height: 3em;
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -36,6 +37,7 @@ const Container = styled.div`
 
 const Main = styled.div`
   flex-grow: 1;
+  max-width: 20em;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -112,29 +114,31 @@ export default class Snackbar extends React.Component {
     } = this.props;
 
     return (
-      <Container
-        position={position}
-        onMouseEnter={this.pause}
-        onMouseLeave={this.resume}
-      >
-        <Main>
-          <Content dismissable={dismissable}>{children || message}</Content>
-          {dismissable ? (
-            <CloseButton onClick={onDismiss}>&times;</CloseButton>
+      <div style={{ display: 'flex' }}>
+        <Container
+          position={position}
+          onMouseEnter={this.pause}
+          onMouseLeave={this.resume}
+        >
+          <Main>
+            <Content dismissable={dismissable}>{children || message}</Content>
+            {dismissable ? (
+              <CloseButton onClick={onDismiss}>&times;</CloseButton>
+            ) : null}
+          </Main>
+          {!sticky && progressBar ? (
+            <ProgressBar
+              timeout={timeout}
+              className="react-snackbar-alert__snackbar-progress-bar"
+              style={{
+                animationPlayState: this.state.animationPaused
+                  ? 'paused'
+                  : 'running'
+              }}
+            />
           ) : null}
-        </Main>
-        {!sticky && progressBar ? (
-          <ProgressBar
-            timeout={timeout}
-            className="react-snackbar-alert__snackbar-progress-bar"
-            style={{
-              animationPlayState: this.state.animationPaused
-                ? 'paused'
-                : 'running'
-            }}
-          />
-        ) : null}
-      </Container>
+        </Container>
+      </div>
     );
   }
 }
