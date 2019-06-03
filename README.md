@@ -50,10 +50,10 @@ Snackbar notifications in 3 easy steps:
 
     render() {
       return (
-        <main>
+        <div>
           <SnackbarManager ref={this.snackbarManager} />
           <button onClick={this.showAlert}>Show Alert</button>
-        </main>
+        </div>
       )
     }
   }

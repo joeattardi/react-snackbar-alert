@@ -14,9 +14,9 @@ export default function NoProgressBarExample() {
   return (
     <div>
       <SnackbarManager ref={snackbarManager} progressBar={false} />
-      <main>
+      <div>
         <button onClick={showSnackbar}>Show Snackbar</button>
-      </main>
+      </div>
     </div>
   );
 }

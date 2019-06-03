@@ -188,9 +188,9 @@ export default function DemoExample() {
       <SnackbarManager
         ref={snackbarManager} 
         position="${this.state.position}" />
-      <main>
+      <div>
         <button onClick={showSnackbar}>Show Snackbar</button>
-      </main>
+      </div>
     </div>
   );
 }

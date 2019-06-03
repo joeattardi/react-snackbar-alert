@@ -14,9 +14,9 @@ export default function PauseOnHoverExample() {
   return (
     <div>
       <SnackbarManager ref={snackbarManager} pauseOnHover={true} />
-      <main>
+      <div>
         <button onClick={showSnackbar}>Show Snackbar</button>
-      </main>
+      </div>
     </div>
   );
 }

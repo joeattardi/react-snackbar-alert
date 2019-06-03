@@ -14,9 +14,9 @@ export default function DismissableExample() {
   return (
     <div>
       <SnackbarManager ref={snackbarManager} dismissable={true} />
-      <main>
+      <div>
         <button onClick={showSnackbar}>Show Snackbar</button>
-      </main>
+      </div>
     </div>
   );
 }

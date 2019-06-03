@@ -15,9 +15,9 @@ export default function CustomTimeoutExample() {
   return (
     <div>
       <SnackbarManager ref={snackbarManager} />
-      <main>
+      <div>
         <button onClick={showSnackbar}>Show Snackbar</button>
-      </main>
+      </div>
     </div>
   );
 }

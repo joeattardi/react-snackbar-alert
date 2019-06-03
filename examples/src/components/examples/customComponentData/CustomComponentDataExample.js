@@ -22,9 +22,9 @@ export default function CustomComponentDataExample() {
         ref={snackbarManager}
         component={CustomSnackbarComponent}
       />
-      <main>
+      <div>
         <button onClick={showSnackbar}>Show Snackbar</button>
-      </main>
+      </div>
     </div>
   );
 }

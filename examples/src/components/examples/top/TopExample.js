@@ -14,9 +14,9 @@ export default function TopExample() {
   return (
     <div>
       <SnackbarManager ref={snackbarManager} position="top" />
-      <main>
+      <div>
         <button onClick={showSnackbar}>Show Snackbar</button>
-      </main>
+      </div>
     </div>
   );
 }
