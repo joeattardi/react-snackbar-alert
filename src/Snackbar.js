@@ -114,12 +114,12 @@ export default class Snackbar extends React.Component {
     } = this.props;
 
     return (
-      <div style={{ display: 'flex' }}>
-        <Container
-          position={position}
-          onMouseEnter={this.pause}
-          onMouseLeave={this.resume}
-        >
+      <div
+        style={{ display: 'flex' }}
+        onMouseEnter={this.pause}
+        onMouseLeave={this.resume}
+      >
+        <Container position={position}>
           <Main>
             <Content dismissable={dismissable}>{children || message}</Content>
             {dismissable ? (
