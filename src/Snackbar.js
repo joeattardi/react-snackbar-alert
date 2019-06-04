@@ -13,7 +13,7 @@ const progress = keyframes`
   }
 
   100% {
-    width: calc(100% + 0.5em);
+    width: 102%;
     border-bottom-right-radius: 5px;
   }
 `;
