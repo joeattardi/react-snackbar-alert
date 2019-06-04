@@ -20,16 +20,20 @@ export default function IndexPage() {
       <h1>Features</h1>
       <ul>
         <li>Easy to use</li>
+        <li>Supported in all modern browsers (plus IE11)</li>
         <li>Notifications can be restyled and extended</li>
         <li>
           Arbitrary custom data can be specified to create rich, interactive
           notifications
         </li>
-        <li>About 6 KB gzipped</li>
+        <li>About 7 KB gzipped</li>
       </ul>
 
       <h1>Requirements</h1>
-      <p>React Snackbar Alert requires React 16 or newer.</p>
+      <p>
+        React Snackbar Alert requires React 16 or newer. It also requires
+        styled-components 4 to be installed.
+      </p>
     </Layout>
   );
 }
