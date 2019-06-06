@@ -1,14 +1,22 @@
-import React, { useRef } from 'react';
+import React from 'react';
 
-import { SnackbarManager } from 'react-snackbar-alert';
+import { SnackbarProvider, wrapComponent } from 'react-snackbar-alert';
 
 import CustomSnackbarComponent from './CustomSnackbarComponent';
 
 export default function CustomComponentDataExample() {
-  const snackbarManager = useRef(null);
+  return (
+    <div>
+      <SnackbarProvider component={CustomSnackbarComponent}>
+        <Container />
+      </SnackbarProvider>
+    </div>
+  );
+}
 
+const Container = wrapComponent(function({ createSnackbar }) {
   function showSnackbar() {
-    snackbarManager.current.create({
+    createSnackbar({
       data: {
         action: 'Retry'
       },
@@ -18,13 +26,7 @@ export default function CustomComponentDataExample() {
 
   return (
     <div>
-      <SnackbarManager
-        ref={snackbarManager}
-        component={CustomSnackbarComponent}
-      />
-      <div>
-        <button onClick={showSnackbar}>Show Snackbar</button>
-      </div>
+      <button onClick={showSnackbar}>Show Snackbar</button>
     </div>
   );
-}
+});

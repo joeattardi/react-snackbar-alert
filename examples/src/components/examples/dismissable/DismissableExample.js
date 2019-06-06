@@ -1,22 +1,25 @@
-import React, { useRef } from 'react';
+import React from 'react';
 
-import { SnackbarManager } from 'react-snackbar-alert';
+import { SnackbarProvider, wrapComponent } from 'react-snackbar-alert';
 
 export default function DismissableExample() {
-  const snackbarManager = useRef(null);
+  return (
+    <SnackbarProvider dismissable={true}>
+      <Container />
+    </SnackbarProvider>
+  );
+}
 
+const Container = wrapComponent(function({ createSnackbar }) {
   function showSnackbar() {
-    snackbarManager.current.create({
+    createSnackbar({
       message: 'Hello Snackbar!'
     });
   }
 
   return (
     <div>
-      <SnackbarManager ref={snackbarManager} dismissable={true} />
-      <div>
-        <button onClick={showSnackbar}>Show Snackbar</button>
-      </div>
+      <button onClick={showSnackbar}>Show Snackbar</button>
     </div>
   );
-}
+});

@@ -1,24 +1,25 @@
-import React, { useRef } from 'react';
+import React from 'react';
 
-import { SnackbarManager } from 'react-snackbar-alert';
+import { SnackbarProvider, wrapComponent } from 'react-snackbar-alert';
 
 export default function StickyExample() {
-  const snackbarManager = useRef(null);
+  return (
+    <SnackbarProvider dismissable={true} sticky={true}>
+      <Container />
+    </SnackbarProvider>
+  );
+}
 
+const Container = wrapComponent(function({ createSnackbar }) {
   function showSnackbar() {
-    snackbarManager.current.create({
-      message: 'Hello Snackbar!',
-      sticky: true,
-      dismissable: true
+    createSnackbar({
+      message: 'Hello Snackbar!'
     });
   }
 
   return (
     <div>
-      <SnackbarManager ref={snackbarManager} />
-      <div>
-        <button onClick={showSnackbar}>Show Snackbar</button>
-      </div>
+      <button onClick={showSnackbar}>Show Snackbar</button>
     </div>
   );
-}
+});

@@ -1,22 +1,25 @@
-import React, { useRef } from 'react';
+import React from 'react';
 
-import { SnackbarManager } from 'react-snackbar-alert';
+import { SnackbarProvider, wrapComponent } from 'react-snackbar-alert';
 
 export default function CustomAnimationTimeoutExample() {
-  const snackbarManager = useRef(null);
+  return (
+    <SnackbarProvider animationTimeout={1000}>
+      <Container />
+    </SnackbarProvider>
+  );
+}
 
+const Container = wrapComponent(function({ createSnackbar }) {
   function showSnackbar() {
-    snackbarManager.current.create({
-      message: 'Custom animation timeout!'
+    createSnackbar({
+      message: 'Hello Snackbar!'
     });
   }
 
   return (
     <div>
-      <SnackbarManager animationTimeout={1000} ref={snackbarManager} />
-      <div>
-        <button onClick={showSnackbar}>Show Snackbar</button>
-      </div>
+      <button onClick={showSnackbar}>Show Snackbar</button>
     </div>
   );
-}
+});

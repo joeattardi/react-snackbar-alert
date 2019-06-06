@@ -57,9 +57,13 @@ export default function SnackbarContainer({
   component: Component,
   dismissable,
   notifications,
+  onPause,
+  onRemove,
+  onResume,
   pauseOnHover,
   position,
-  progressBar
+  progressBar,
+  sticky
 }) {
   const orderedNotifications =
     position.indexOf('top') === 0
@@ -86,16 +90,20 @@ export default function SnackbarContainer({
                     ? notification.progressBar
                     : progressBar
                 }
-                sticky={notification.sticky}
+                sticky={
+                  typeof notification.sticky !== 'undefined'
+                    ? notification.sticky
+                    : sticky
+                }
                 timeout={notification.timeout}
                 dismissable={
                   typeof notification.dismissable !== 'undefined'
                     ? notification.dismissable
                     : dismissable
                 }
-                onDismiss={() => this.remove(notification)}
-                onPause={() => this.pause(notification)}
-                onResume={() => this.resume(notification)}
+                onDismiss={() => onRemove(notification)}
+                onPause={() => onPause(notification)}
+                onResume={() => onResume(notification)}
                 pauseOnHover={
                   typeof notification.pauseOnHover !== 'undefined'
                     ? notification.pauseOnHover
@@ -118,6 +126,9 @@ SnackbarContainer.propTypes = {
   component: PropTypes.elementType,
   dismissable: PropTypes.bool,
   notifications: PropTypes.array,
+  onPause: PropTypes.func.isRequired,
+  onRemove: PropTypes.func.isRequired,
+  onResume: PropTypes.func.isRequired,
   pauseOnHover: PropTypes.bool,
   position: PropTypes.oneOf([
     'top',
@@ -127,7 +138,8 @@ SnackbarContainer.propTypes = {
     'bottom-left',
     'bottom-right'
   ]),
-  progressBar: PropTypes.bool
+  progressBar: PropTypes.bool,
+  sticky: PropTypes.bool
 };
 
 SnackbarContainer.defaultProps = {
@@ -137,5 +149,6 @@ SnackbarContainer.defaultProps = {
   pauseOnHover: false,
   position: 'bottom',
   progressBar: true,
+  sticky: false,
   timeout: 3000
 };

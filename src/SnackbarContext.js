@@ -22,7 +22,9 @@ export class SnackbarProvider extends React.Component {
     };
 
     this.create = this.create.bind(this);
+    this.pause = this.pause.bind(this);
     this.remove = this.remove.bind(this);
+    this.resume = this.resume.bind(this);
   }
 
   create(notification) {
@@ -30,6 +32,10 @@ export class SnackbarProvider extends React.Component {
 
     if (typeof notification.timeout === 'undefined') {
       notification.timeout = this.props.timeout;
+    }
+
+    if (typeof notification.sticky === 'undefined') {
+      notification.sticky = this.props.sticky;
     }
 
     this.setState(
@@ -59,6 +65,36 @@ export class SnackbarProvider extends React.Component {
     delete this.startTimes[notification.key];
   }
 
+  pause(notification) {
+    if (!notification.sticky) {
+      clearTimeout(this.timeouts[notification.key]);
+      delete this.timeouts[notification.key];
+
+      let timeout = this.paused[notification.key] || notification.timeout;
+
+      const timeElapsed = Date.now() - this.startTimes[notification.key];
+      const timeRemaining = timeout - timeElapsed;
+      this.paused[notification.key] = timeRemaining;
+    }
+  }
+
+  resume(notification) {
+    if (!notification.sticky) {
+      const timeRemaining = this.paused[notification.key];
+      this.startTimes[notification.key] = Date.now();
+      const timeout = setTimeout(() => {
+        this.remove(notification);
+      }, timeRemaining);
+      this.timeouts[notification.key] = timeout;
+    }
+  }
+
+  componentWillUnmount() {
+    Object.keys(this.timeouts).forEach(key => {
+      clearTimeout(this.timeouts[key]);
+    });
+  }
+
   render() {
     return (
       <SnackbarContext.Provider
@@ -71,9 +107,13 @@ export class SnackbarProvider extends React.Component {
           component={this.props.component}
           dismissable={this.props.dismissable}
           notifications={this.state.notifications}
+          onPause={this.pause}
+          onRemove={this.remove}
+          onResume={this.resume}
           pauseOnHover={this.props.pauseOnHover}
           position={this.props.position}
           progressBar={this.props.progressBar}
+          sticky={this.props.sticky}
           timeout={this.props.timeout}
         />
         {this.props.children}
@@ -89,6 +129,7 @@ SnackbarProvider.defaultProps = {
   pauseOnHover: false,
   position: 'bottom',
   progressBar: true,
+  sticky: false,
   timeout: 3000
 };
 
@@ -107,6 +148,7 @@ SnackbarProvider.propTypes = {
     'bottom-left',
     'bottom-right'
   ]),
+  sticky: PropTypes.bool,
   timeout: PropTypes.number
 };
 
