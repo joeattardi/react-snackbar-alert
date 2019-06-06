@@ -1,23 +1,25 @@
-import React, { useRef } from 'react';
+import React from 'react';
 
-import { SnackbarProvider, SnackbarManager } from 'react-snackbar-alert';
+import { SnackbarProvider, wrapComponent } from 'react-snackbar-alert';
 
 export default function BaseExample() {
-  const snackbarManager = useRef();
-
-  function showSnackbar() {
-    // snackbarManager.current.create({
-    //   message: 'Hello Snackbar!'
-    // });
-  }
-
   return (
     <SnackbarProvider>
-      <div>
-        <div>
-          <button onClick={showSnackbar}>Show Snackbar</button>
-        </div>
-      </div>
+      <Container />
     </SnackbarProvider>
   );
 }
+
+const Container = wrapComponent(function({ createSnackbar }) {
+  function showSnackbar() {
+    createSnackbar({
+      message: 'Hello Snackbar!'
+    });
+  }
+
+  return (
+    <div>
+      <button onClick={showSnackbar}>Show Snackbar</button>
+    </div>
+  );
+});

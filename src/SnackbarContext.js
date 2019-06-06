@@ -1,10 +1,13 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useContext } from 'react';
 import uuidv4 from 'uuid/v4';
 
 import Snackbar from './Snackbar';
+import SnackbarContainer from './SnackbarContainer';
 
-const { Provider, Consumer } = React.createContext();
+export const SnackbarContext = React.createContext();
+
+export const SnackbarConsumer = SnackbarContext.Consumer;
 
 export class SnackbarProvider extends React.Component {
   constructor(props) {
@@ -58,14 +61,23 @@ export class SnackbarProvider extends React.Component {
 
   render() {
     return (
-      <Provider
+      <SnackbarContext.Provider
         value={{
-          notifications: this.state.notifications,
-          add: this.add
+          createSnackbar: this.create
         }}
       >
+        <SnackbarContainer
+          animationTimeout={this.props.animationTimeout}
+          component={this.props.component}
+          dismissable={this.props.dismissable}
+          notifications={this.state.notifications}
+          pauseOnHover={this.props.pauseOnHover}
+          position={this.props.position}
+          progressBar={this.props.progressBar}
+          timeout={this.props.timeout}
+        />
         {this.props.children}
-      </Provider>
+      </SnackbarContext.Provider>
     );
   }
 }
@@ -97,3 +109,10 @@ SnackbarProvider.propTypes = {
   ]),
   timeout: PropTypes.number
 };
+
+export function wrapComponent(Comp) {
+  return function WrappedComponent(props) {
+    const { createSnackbar } = useContext(SnackbarContext);
+    return <Comp createSnackbar={createSnackbar} {...props} />;
+  };
+}
