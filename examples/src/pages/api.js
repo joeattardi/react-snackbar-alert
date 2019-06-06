@@ -8,9 +8,14 @@ export default function ApiPage() {
   return (
     <Layout title="API">
       <h2>
-        <code>SnackbarManager</code> Component
+        <code>SnackbarProvider</code> Component
       </h2>
       <h3>Props</h3>
+      <p>
+        Unless otherwise noted, any of these props can be overridden for a
+        specific snackbar instance by adding that same property to the object
+        passed to <code>createSnackbar</code>.
+      </p>
       <table className={styles.api}>
         <thead>
           <tr>
@@ -35,7 +40,10 @@ export default function ApiPage() {
             <td>
               <code>Snackbar</code> component
             </td>
-            <td>The component type to use for rendering the snackbar</td>
+            <td>
+              The component type to use for rendering the snackbar.{' '}
+              <strong>Cannot be overridden for an individual snackbar.</strong>
+            </td>
           </tr>
           <tr>
             <td>dismissable</td>
@@ -69,7 +77,10 @@ export default function ApiPage() {
               </ul>
             </td>
             <td>"bottom"</td>
-            <td>The position on screen to show the snackbars</td>
+            <td>
+              The position on screen to show the snackbars.{' '}
+              <strong>Cannot be overridden for an individual snackbar.</strong>
+            </td>
           </tr>
           <tr>
             <td>progressBar</td>
@@ -79,6 +90,12 @@ export default function ApiPage() {
               Whether or not to show an animated progress bar indicating the
               time before a snackbar is removed
             </td>
+          </tr>
+          <tr>
+            <td>sticky</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>Whether or not the snackbars should be sticky</td>
           </tr>
           <tr>
             <td>timeout</td>
@@ -91,8 +108,8 @@ export default function ApiPage() {
           </tr>
         </tbody>
       </table>
-      <h3>Methods</h3>
-      <code>create(snackbar: SnackbarData)</code>
+      <h3>Context</h3>
+      <code>createSnackbar(snackbar: SnackbarData)</code>
       <p>Creates and shows a snackbar notification.</p>
       <h3>
         <code>SnackbarData</code> type
@@ -168,6 +185,13 @@ export default function ApiPage() {
           </tr>
         </tbody>
       </table>
+      <h2>
+        <code>wrapComponent</code> helper
+      </h2>
+      <p>
+        This helper function wraps the passed component, adding a{' '}
+        <code>createSnackbar</code> prop to the wrapped component.
+      </p>
     </Layout>
   );
 }
