@@ -152,6 +152,36 @@ export default class DemoExample extends React.Component {
             />
             <pre>
               <code className="language-jsx">{`
+import React from 'react';
+
+import { SnackbarProvider, wrapComponent } from 'react-snackbar-alert';
+
+export default function DemoExample() {
+  return (
+    <SnackbarProvider position="${this.state.position}">
+      <Container />
+    </SnackbarProvider>
+  );
+}
+
+const Container = wrapComponent(function({ createSnackbar }) {
+  function showSnackbar() {
+    createSnackbar({
+      message: 'Hello Snackbar!',
+      dismissable: ${this.state.dismissable},
+      pauseOnHover: ${this.state.pauseOnHover},
+      progressBar: ${this.state.progressBar},
+      sticky: ${this.state.sticky},
+      timeout: ${this.state.timeout}
+    });
+  }
+
+  return (
+    <div>
+      <button onClick={showSnackbar}>Show Snackbar</button>
+    </div>
+  );
+});
 
           `}</code>
             </pre>
