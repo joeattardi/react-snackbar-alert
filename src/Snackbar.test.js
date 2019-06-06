@@ -55,7 +55,7 @@ describe('Snackbar', () => {
       expect(wrapper.find('button')).toHaveLength(0);
     });
 
-    it.only('should call the onDismiss callback when the close button is clicked', () => {
+    it('should call the onDismiss callback when the close button is clicked', () => {
       const onDismiss = jest.fn();
       const wrapper = mount(
         <Snackbar message="Hello!" dismissable={true} onDismiss={onDismiss} />
