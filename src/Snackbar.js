@@ -68,7 +68,9 @@ const ProgressBar = styled.div`
   top: 0.25em;
   left: -0.25em;
   border-bottom-left-radius: 5px;
-  animation: ${progress} ${props => props.timeout}ms linear;
+  animation-name: ${progress};
+  animation-duration: ${props => props.timeout}ms;
+  animation-timing-function: linear;
 `;
 
 export default class Snackbar extends React.Component {
@@ -123,11 +125,14 @@ export default class Snackbar extends React.Component {
           <Main>
             <Content dismissable={dismissable}>{children || message}</Content>
             {dismissable ? (
-              <CloseButton onClick={onDismiss}>&times;</CloseButton>
+              <CloseButton title="Close" onClick={onDismiss}>
+                &times;
+              </CloseButton>
             ) : null}
           </Main>
           {!sticky && progressBar ? (
             <ProgressBar
+              role="progressbar"
               timeout={timeout}
               className="react-snackbar-alert__snackbar-progress-bar"
               style={{

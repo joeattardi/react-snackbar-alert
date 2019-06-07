@@ -1,70 +1,62 @@
 import React from 'react';
-import { render, mount } from 'enzyme';
+import { render } from '@testing-library/react';
+import 'jest-dom/extend-expect';
 
 import Snackbar from './Snackbar';
 
 describe('Snackbar', () => {
   it('should render the message', () => {
-    const wrapper = render(<Snackbar message="Hello!" />);
-    expect(wrapper.text()).toBe('Hello!');
+    const { queryByText } = render(<Snackbar message="Hello" />);
+    expect(queryByText('Hello')).toBeInTheDocument();
   });
 
   it('should render the children', () => {
-    const wrapper = render(<Snackbar>Hello!</Snackbar>);
-    expect(wrapper.text()).toBe('Hello!');
+    const { queryByText } = render(<Snackbar>Hello</Snackbar>);
+    expect(queryByText('Hello')).toBeInTheDocument();
   });
 
   it('should render the children if both children and message are specified', () => {
-    const wrapper = render(<Snackbar message="Foo">Bar</Snackbar>);
-    expect(wrapper.text()).toBe('Bar');
+    const { queryByText } = render(<Snackbar message="Foo">Bar</Snackbar>);
+    expect(queryByText('Bar')).toBeInTheDocument();
+    expect(queryByText('Foo')).not.toBeInTheDocument();
   });
 
   describe('progress bar', () => {
     it('should render the progress bar if the progressBar prop is true', () => {
-      const wrapper = render(<Snackbar message="Hello!" progressBar={true} />);
-      expect(
-        wrapper.find('.react-snackbar-alert__snackbar-progress-bar')
-      ).toHaveLength(1);
+      const { queryByRole } = render(
+        <Snackbar message="Hello" progressBar={true} />
+      );
+      expect(queryByRole('progressbar')).toBeInTheDocument();
     });
 
     it('should not render the progress bar if the progressBar prop is false', () => {
-      const wrapper = render(<Snackbar message="Hello!" progressBar={false} />);
-      expect(
-        wrapper.find('.react-snackbar-alert__snackbar-progress-bar')
-      ).toHaveLength(0);
+      const { queryByRole } = render(
+        <Snackbar message="Hello!" progressBar={false} />
+      );
+      expect(queryByRole('progressbar')).not.toBeInTheDocument();
     });
 
     it('should not render the progress bar, even if the progressBar prop is true, if the sticky prop is true', () => {
-      const wrapper = render(
+      const { queryByRole } = render(
         <Snackbar message="Hello!" progressBar={true} sticky={true} />
       );
-      expect(
-        wrapper.find('.react-snackbar-alert__snackbar-progress-bar')
-      ).toHaveLength(0);
+      expect(queryByRole('progressbar')).not.toBeInTheDocument();
     });
   });
 
   describe('close button', () => {
     it('should render the close button if the dismissable prop is true', () => {
-      const wrapper = render(<Snackbar message="Hello!" dismissable={true} />);
-      expect(wrapper.find('button')).toHaveLength(1);
+      const { queryByTitle } = render(
+        <Snackbar message="Hello!" dismissable={true} />
+      );
+      expect(queryByTitle('Close')).toBeInTheDocument();
     });
 
     it('should not render the close button if the dismissable prop is false', () => {
-      const wrapper = render(<Snackbar message="Hello!" dismissable={false} />);
-      expect(wrapper.find('button')).toHaveLength(0);
-    });
-
-    it('should call the onDismiss callback when the close button is clicked', () => {
-      const onDismiss = jest.fn();
-      const wrapper = mount(
-        <Snackbar message="Hello!" dismissable={true} onDismiss={onDismiss} />
+      const { queryByTitle } = render(
+        <Snackbar message="Hello!" dismissable={false} />
       );
-
-      wrapper.find('button').simulate('click');
-      expect(onDismiss.mock.calls.length).toBe(1);
-
-      wrapper.unmount();
+      expect(queryByTitle('Close')).not.toBeInTheDocument();
     });
   });
 });
