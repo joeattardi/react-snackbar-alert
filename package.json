@@ -24,6 +24,7 @@
     "url": "https://github.com/joeattardi/react-snackbar-alert.git"
   },
   "homepage": "https://joeattardi.github.io/react-snackbar-alert/",
+  "bugs": "https://github.com/joeattardi/react-snackbar-alert/issues",
   "keywords": [
     "react",
     "snackbar",
@@ -50,8 +51,8 @@
     "jest-dom": "^3.4.0",
     "lint-staged": "^8.1.7",
     "prettier": "1.17.1",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
     "styled-components": "^4.2.0"
   },
   "peerDependencies": {
