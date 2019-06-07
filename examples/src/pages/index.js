@@ -26,7 +26,6 @@ export default function IndexPage() {
           Arbitrary custom data can be specified to create rich, interactive
           notifications
         </li>
-        <li>About 7 KB gzipped</li>
       </ul>
 
       <h1>Requirements</h1>
