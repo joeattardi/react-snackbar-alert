@@ -30,7 +30,7 @@ export default function IndexPage() {
 
       <h1>Requirements</h1>
       <p>
-        React Snackbar Alert requires React 16 or newer. It also requires
+        React Snackbar Alert requires React 16.8 or newer. It also requires
         styled-components 4 to be installed.
       </p>
     </Layout>
