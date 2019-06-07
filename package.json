@@ -1,6 +1,6 @@
 {
   "name": "react-snackbar-alert",
-  "version": "1.9.0",
+  "version": "2.0.0",
   "description": "Simple snackbar-style notifications for React",
   "main": "build/index.js",
   "files": [
@@ -28,7 +28,8 @@
     "react",
     "snackbar",
     "alert",
-    "notification"
+    "notification",
+    "notifications"
   ],
   "author": "Joe Attardi <jattardi@gmail.com> (https://joeattardi.codes)",
   "license": "MIT",
