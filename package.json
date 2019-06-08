@@ -1,6 +1,6 @@
 {
   "name": "react-snackbar-alert",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Simple snackbar-style notifications for React",
   "main": "dist/react-snackbar-alert.min.js",
   "files": [
