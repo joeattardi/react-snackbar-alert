@@ -7,8 +7,14 @@ export default {
   input: 'src/index.js',
   external: ['react', 'react-dom', 'styled-components'],
   output: {
-    format: 'cjs',
-    file: 'dist/react-snackbar-alert.min.js'
+    format: 'umd',
+    name: 'react-snackbar-alert',
+    file: 'dist/react-snackbar-alert.min.js',
+    globals: {
+      react: 'React',
+      'react-dom': 'ReactDOM',
+      'styled-components': 'styled'
+    }
   },
   plugins: [
     babel({
