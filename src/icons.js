@@ -3,14 +3,26 @@ import styled from 'styled-components';
 
 const Svg = styled.svg`
   fill: currentColor;
-  width: 12px;
-  height: 12px;
 `;
 
 export function CloseIcon() {
   return (
-    <Svg viewBox="0 0 8 8">
-      <path d="M1.41 0l-1.41 1.41.72.72 1.78 1.81-1.78 1.78-.72.69 1.41 1.44.72-.72 1.81-1.81 1.78 1.81.69.72 1.44-1.44-.72-.69-1.81-1.78 1.81-1.81.72-.72-1.44-1.41-.69.72-1.78 1.78-1.81-1.78-.72-.72z" />
+    <Svg viewBox="0 0 12 16" style={{ width: '12px', height: '16px' }}>
+      <path
+        fillRule="evenodd"
+        d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"
+      />
+    </Svg>
+  );
+}
+
+export function WarningIcon() {
+  return (
+    <Svg viewBox="0 0 16 16" style={{ width: '16px', height: '16px' }}>
+      <path
+        fillRule="evenodd"
+        d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"
+      />
     </Svg>
   );
 }

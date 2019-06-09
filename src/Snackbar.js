@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
-import { CloseIcon, WarningIcon } from './icons';
+import { CloseIcon } from './icons';
 
 const progress = keyframes`
   0% {
