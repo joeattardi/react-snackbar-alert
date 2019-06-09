@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
+import { CloseIcon, WarningIcon } from './icons';
+
 const progress = keyframes`
   0% {
     width: 0;
@@ -52,9 +54,10 @@ const Content = styled.div`
 
 const CloseButton = styled.button`
   background: transparent;
+  display: flex;
+  justify-content: center;
   padding: 0;
   font-size: 1.5em;
-  margin-top: -0.25em;
   outline: none;
   width: 1em;
 `;
@@ -126,7 +129,7 @@ export default class Snackbar extends React.Component {
             <Content dismissable={dismissable}>{children || message}</Content>
             {dismissable ? (
               <CloseButton title="Close" onClick={onDismiss}>
-                &times;
+                <CloseIcon />
               </CloseButton>
             ) : null}
           </Main>
