@@ -95,6 +95,7 @@ export default function SnackbarContainer({
                     ? notification.sticky
                     : sticky
                 }
+                theme={notification.theme || 'default'}
                 timeout={notification.timeout}
                 dismissable={
                   typeof notification.dismissable !== 'undefined'

@@ -3,6 +3,7 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
 import { CloseIcon } from './icons';
+import { getTheme, themeNames } from './themes';
 
 const progress = keyframes`
   0% {
@@ -21,7 +22,7 @@ const progress = keyframes`
 `;
 
 const Container = styled.div`
-  background: rgba(0, 0, 0, 0.8);
+  background: ${props => getTheme(props.theme).color};
   border-radius: 5px;
   color: #ffffff;
   min-height: 3em;
@@ -30,11 +31,14 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0.25em;
-  text-align: center;
+  padding: 0.25em 0.5em;
   margin-bottom: ${props =>
     props.position.indexOf('bottom') === 0 ? '0.5em' : 0};
   margin-top: ${props => (props.position.indexOf('top') === 0 ? '0.5em' : 0)};
+`;
+
+const IconContainer = styled.div`
+  margin-right: 0.5em;
 `;
 
 const Main = styled.div`
@@ -49,7 +53,6 @@ const Main = styled.div`
 
 const Content = styled.div`
   flex-grow: 1;
-  margin-left: ${props => (props.dismissable ? '1.5em' : '0')};
 `;
 
 const CloseButton = styled.button`
@@ -64,12 +67,12 @@ const CloseButton = styled.button`
 
 const ProgressBar = styled.div`
   align-self: flex-start;
-  width: calc(100% + 0.5em);
+  width: calc(100% + 1em);
   height: 0.25em;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.4);
   position: relative;
   top: 0.25em;
-  left: -0.25em;
+  left: -0.5em;
   border-bottom-left-radius: 5px;
   animation-name: ${progress};
   animation-duration: ${props => props.timeout}ms;
@@ -115,8 +118,11 @@ export default class Snackbar extends React.Component {
       onDismiss,
       sticky,
       progressBar,
-      position
+      position,
+      theme
     } = this.props;
+
+    const IconComponent = getTheme(theme).icon;
 
     return (
       <div
@@ -124,8 +130,13 @@ export default class Snackbar extends React.Component {
         onMouseEnter={this.pause}
         onMouseLeave={this.resume}
       >
-        <Container position={position}>
+        <Container position={position} theme={theme}>
           <Main>
+            {IconComponent ? (
+              <IconContainer>
+                <IconComponent />
+              </IconContainer>
+            ) : null}
             <Content dismissable={dismissable}>{children || message}</Content>
             {dismissable ? (
               <CloseButton title="Close" onClick={onDismiss}>
@@ -162,6 +173,7 @@ Snackbar.propTypes = {
   onPause: PropTypes.func,
   onResume: PropTypes.func,
   timeout: PropTypes.number,
+  theme: PropTypes.oneOf(themeNames),
   dismissable: PropTypes.bool,
   message: PropTypes.string,
   onDismiss: PropTypes.func,

@@ -25,6 +25,7 @@ export default class DemoExample extends React.Component {
       pauseOnHover: false,
       sticky: false,
       dismissable: false,
+      theme: 'default',
       timeout: 3000,
       position: 'bottom'
     };
@@ -88,6 +89,20 @@ export default class DemoExample extends React.Component {
                   />
                 </div>
                 <div>
+                  <label htmlFor="theme">Theme:</label>
+                  <select
+                    id="theme"
+                    value={this.state.theme}
+                    onChange={this.selectStateUpdater('theme')}
+                  >
+                    <option value="default">Default</option>
+                    <option value="info">Info</option>
+                    <option value="success">Success</option>
+                    <option value="warning">Warning</option>
+                    <option value="error">Error</option>
+                  </select>
+                </div>
+                <div>
                   <input
                     type="checkbox"
                     id="progress-bar"
@@ -149,6 +164,7 @@ export default class DemoExample extends React.Component {
               progressBar={this.state.progressBar}
               sticky={this.state.sticky}
               timeout={this.state.timeout}
+              theme={this.state.theme}
             />
             <pre>
               <code className="language-jsx">{`
@@ -172,6 +188,7 @@ const Container = wrapComponent(function({ createSnackbar }) {
       pauseOnHover: ${this.state.pauseOnHover},
       progressBar: ${this.state.progressBar},
       sticky: ${this.state.sticky},
+      theme: '${this.state.theme}',
       timeout: ${this.state.timeout}
     });
   }
@@ -198,6 +215,7 @@ function SnackbarTrigger({
   pauseOnHover,
   progressBar,
   sticky,
+  theme,
   timeout
 }) {
   function showSnackbar() {
@@ -207,6 +225,7 @@ function SnackbarTrigger({
       pauseOnHover,
       sticky,
       dismissable,
+      theme,
       timeout
     });
   }
