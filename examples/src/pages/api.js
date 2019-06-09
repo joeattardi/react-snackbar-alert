@@ -27,15 +27,21 @@ export default function ApiPage() {
         </thead>
         <tbody>
           <tr>
-            <td>animationTimeout</td>
+            <td>
+              <code>animationTimeout</code>
+            </td>
             <td>number</td>
-            <td>500</td>
+            <td>
+              <code>500</code>
+            </td>
             <td>
               The duration of the show and hide animations, in milliseconds
             </td>
           </tr>
           <tr>
-            <td>component</td>
+            <td>
+              <code>component</code>
+            </td>
             <td>React component type</td>
             <td>
               <code>Snackbar</code> component
@@ -46,61 +52,97 @@ export default function ApiPage() {
             </td>
           </tr>
           <tr>
-            <td>dismissable</td>
+            <td>
+              <code>dismissable</code>
+            </td>
             <td>boolean</td>
-            <td>false</td>
+            <td>
+              <code>false</code>
+            </td>
             <td>
               Whether or not created snackbars can be manually dismissed by the
               user
             </td>
           </tr>
           <tr>
-            <td>pauseOnHover</td>
+            <td>
+              <code>pauseOnHover</code>
+            </td>
             <td>boolean</td>
-            <td>false</td>
+            <td>
+              <code>false</code>
+            </td>
             <td>
               Whether or not to pause a snackbar's timeout when the mouse is
               hovered over it
             </td>
           </tr>
           <tr>
-            <td>position</td>
+            <td>
+              <code>position</code>
+            </td>
             <td>
               One of:
               <ul>
-                <li>top</li>
-                <li>top-left</li>
-                <li>top-right</li>
-                <li>bottom</li>
-                <li>bottom-left</li>
-                <li>bottom-right</li>
+                <li>
+                  <code>'top'</code>
+                </li>
+                <li>
+                  <code>'top-left'</code>
+                </li>
+                <li>
+                  <code>'top-right'</code>
+                </li>
+                <li>
+                  <code>'bottom'</code>
+                </li>
+                <li>
+                  <code>'bottom-left'</code>
+                </li>
+                <li>
+                  <code>'bottom-right'</code>
+                </li>
               </ul>
             </td>
-            <td>"bottom"</td>
+            <td>
+              <code>'bottom'</code>
+            </td>
             <td>
               The position on screen to show the snackbars.{' '}
               <strong>Cannot be overridden for an individual snackbar.</strong>
             </td>
           </tr>
           <tr>
-            <td>progressBar</td>
+            <td>
+              <code>progressBar</code>
+            </td>
             <td>boolean</td>
-            <td>true</td>
+            <td>
+              <code>true</code>
+            </td>
             <td>
               Whether or not to show an animated progress bar indicating the
               time before a snackbar is removed
             </td>
           </tr>
           <tr>
-            <td>sticky</td>
+            <td>
+              <code>sticky</code>
+            </td>
             <td>boolean</td>
-            <td>false</td>
+            <td>
+              <code>false</code>
+            </td>
             <td>Whether or not the snackbars should be sticky</td>
           </tr>
           <tr>
-            <td>timeout</td>
+            <td>
+              <code>timeout</code>
+            </td>
             <td>number</td>
-            <td>3000</td>
+            <td>
+              <code>3000</code>
+            </td>
             <td>
               The time before a snackbar is automatically removed, in
               milliseconds
@@ -129,33 +171,43 @@ export default function ApiPage() {
         </thead>
         <tbody>
           <tr>
-            <td>animationTimeout</td>
+            <td>
+              <code>animationTimeout</code>
+            </td>
             <td>number</td>
             <td>
               The duration of the show and hide animations, in milliseconds
             </td>
           </tr>
           <tr>
-            <td>data</td>
+            <td>
+              <code>data</code>
+            </td>
             <td>object</td>
             <td>
               Custom data that can be used with a custom snackbar component
             </td>
           </tr>
           <tr>
-            <td>dismissable</td>
+            <td>
+              <code>dismissable</code>
+            </td>
             <td>boolean</td>
             <td>
               Whether or not this snackbar can be manually dismissed by the user
             </td>
           </tr>
           <tr>
-            <td>message (Required)</td>
+            <td>
+              <code>message</code> (Required)
+            </td>
             <td>string</td>
             <td>The message to display</td>
           </tr>
           <tr>
-            <td>pauseOnHover</td>
+            <td>
+              <code>pauseOnHover</code>
+            </td>
             <td>boolean</td>
             <td>
               Whether or not to pause this snackbar's timeout when it is hovered
@@ -163,12 +215,16 @@ export default function ApiPage() {
             </td>
           </tr>
           <tr>
-            <td>progressBar</td>
+            <td>
+              <code>progressBar</code>
+            </td>
             <td>boolean</td>
             <td>Whether or not to show the progress bar for this snackbar</td>
           </tr>
           <tr>
-            <td>sticky</td>
+            <td>
+              <code>sticky</code>
+            </td>
             <td>boolean</td>
             <td>
               Whether or not this snackbar should be sticky. Sticky snackbars
@@ -176,7 +232,38 @@ export default function ApiPage() {
             </td>
           </tr>
           <tr>
-            <td>timeout</td>
+            <td>
+              <code>theme</code>
+            </td>
+            <td>
+              One of:
+              <ul>
+                <li>
+                  <code>'default'</code>
+                </li>
+                <li>
+                  <code>'info'</code>
+                </li>
+                <li>
+                  <code>'success'</code>
+                </li>
+                <li>
+                  <code>'warning'</code>
+                </li>
+                <li>
+                  <code>'error'</code>
+                </li>
+              </ul>
+            </td>
+            <td>
+              The theme to use for this snackbar. Default is{' '}
+              <code>'default'</code>.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <code>timeout</code>
+            </td>
             <td>number</td>
             <td>
               The time before this snackbar is automatically removed, in
@@ -189,8 +276,8 @@ export default function ApiPage() {
         <code>wrapComponent</code> helper
       </h2>
       <p>
-        This helper function wraps the passed component, adding a{' '}
-        <code>createSnackbar</code> prop to the wrapped component.
+        This helper function wraps the passed component, adding the{' '}
+        <code>createSnackbar</code> function prop to the wrapped component.
       </p>
     </Layout>
   );

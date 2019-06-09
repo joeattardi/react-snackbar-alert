@@ -20,7 +20,8 @@ const Container = wrapComponent(function({ createSnackbar }) {
       data: {
         action: 'Retry'
       },
-      message: '⚠️ Connection Error'
+      theme: 'error',
+      message: 'Connection Error'
     });
   }
 

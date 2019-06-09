@@ -15,7 +15,7 @@ export default function CustomComponentPage() {
       <p>
         For greater customization of the snackbar component, a custom component
         can be used. Create your custom snackbar component and pass it as the{' '}
-        <code>component</code> prop to the <code>SnackbarManager</code>. The
+        <code>component</code> prop to the <code>SnackbarProvider</code>. The
         component will receive a <code>message</code> prop with the message to
         display.
       </p>

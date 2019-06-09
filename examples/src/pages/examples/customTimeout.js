@@ -18,11 +18,11 @@ export default function CustomTimeoutPage() {
       <ul>
         <li>
           Setting the <code>timeout</code> prop on the{' '}
-          <code>SnackbarManager</code> for all snackbars
+          <code>SnackbarProvider</code> for all snackbars
         </li>
         <li>
-          Setting the <code>timeout</code> property on the passed snackbar
-          object for a specific snackbar
+          Setting the <code>timeout</code> property on the object passed to{' '}
+          <code>createSnackbar</code> for a specific snackbar
         </li>
       </ul>
 

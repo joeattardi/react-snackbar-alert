@@ -20,11 +20,11 @@ export default function BasePage() {
       <ul>
         <li>
           Setting the <code>dismissable</code> prop on the{' '}
-          <code>SnackbarManager</code> (to make all snackbars dismissable)
+          <code>SnackbarProvider</code> (to make all snackbars dismissable)
         </li>
         <li>
-          Setting the <code>dismissable</code> property on the passed snackbar
-          object (to make only that snackbar dismissable)
+          Setting the <code>dismissable</code> property on the object passed to{' '}
+          <code>createSnackbar</code> (to make only that snackbar dismissable)
         </li>
       </ul>
 

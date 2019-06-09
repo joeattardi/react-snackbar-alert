@@ -12,8 +12,19 @@ export default function StickyPage() {
     <Layout title="Sticky Snackbars">
       <p>
         A snackbar can be sticky, which means that it is not automatically
-        removed.
+        removed. This can be done in one of two ways:
       </p>
+
+      <ul>
+        <li>
+          Setting the <code>sticky</code> prop on the{' '}
+          <code>SnackbarProvider</code> to make all snackbars sticky
+        </li>
+        <li>
+          Setting the <code>sticky</code> property on the object passed to{' '}
+          <code>createSnackbar</code> to make a specific snackbar sticky
+        </li>
+      </ul>
 
       <p>
         It is recommended that sticky snackbars are also user-dismissable,

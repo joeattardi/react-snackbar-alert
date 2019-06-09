@@ -4,6 +4,7 @@ import { fireEvent, render } from '@testing-library/react';
 import 'jest-dom/extend-expect';
 
 import { SnackbarProvider, SnackbarConsumer } from './SnackbarContext';
+import { themes } from './themes';
 
 function renderTestApp(providerProps = {}, snackbarOptions = {}) {
   return render(
@@ -238,5 +239,27 @@ describe('SnackbarContext', () => {
 
     const progressBar = queryByRole('progressbar');
     expect(progressBar).not.toBeInTheDocument();
+  });
+
+  describe('themes', () => {
+    function testTheme(theme) {
+      const { queryByText } = renderTestApp(
+        {},
+        { message: 'Hello Snackbar', theme }
+      );
+
+      fireEvent.click(queryByText('Show Snackbar'));
+
+      const snackbar = queryByText('Hello Snackbar');
+      expect(getComputedStyle(snackbar.parentNode.parentNode).background).toBe(
+        themes[theme].color
+      );
+    }
+
+    Object.keys(themes).forEach(theme => {
+      it(`should create a snackbar with the "${theme}" theme`, () => {
+        testTheme(theme);
+      });
+    });
   });
 });

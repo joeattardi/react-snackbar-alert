@@ -18,12 +18,13 @@ export default function BasePage() {
       <ul>
         <li>
           Setting the <code>progressBar</code> prop on the{' '}
-          <code>SnackbarManager</code> to <code>false</code> to disable for all
+          <code>SnackbarProvider</code> to <code>false</code> to disable for all
           snackbars
         </li>
         <li>
-          Setting the <code>progressBar</code> property on the passed snackbar
-          object to <code>false</code> to disable for a specific snackbar
+          Setting the <code>progressBar</code> property on the object passed to{' '}
+          <code>createSnackbar</code> to <code>false</code> to disable for a
+          specific snackbar
         </li>
       </ul>
 

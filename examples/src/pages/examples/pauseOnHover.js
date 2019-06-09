@@ -19,11 +19,11 @@ export default function PauseOnHoverPage() {
       <ul>
         <li>
           Setting the <code>pauseOnHover</code> prop on the{' '}
-          <code>SnackbarManager</code> for all snackbars
+          <code>SnackbarProvider</code> for all snackbars
         </li>
         <li>
-          Setting the <code>pauseOnHover</code> property on the passed snackbar
-          object for a specific snackbar
+          Setting the <code>pauseOnHover</code> property on the object passed to{' '}
+          <code>createSnackbar</code> for a specific snackbar
         </li>
       </ul>
 

@@ -18,11 +18,11 @@ export default function CustomAnimationTimeoutPage() {
       <ul>
         <li>
           Specifying the <code>animationTimeout</code> prop on the{' '}
-          <code>SnackbarManager</code> component.
+          <code>SnackbarProvider</code> component.
         </li>
         <li>
-          Specifying the <code>animationTimeout</code> property on the passed
-          snackbar object.
+          Specifying the <code>animationTimeout</code> property on the object
+          passed to <code>createSnackbar</code>
         </li>
       </ul>
 

@@ -19,9 +19,9 @@ export default function CustomComponentDataDocumentation() {
       </p>
 
       <p>
-        Simply pass a <code>data</code> property in the snackbar object passed
-        to <code>SnackbarManager.create</code>, then reference the data
-        attributes in your custom component's <code>render</code> function.
+        Simply pass a <code>data</code> property in the object passed to{' '}
+        <code>createSnackbar</code>, then reference the data attributes in your
+        custom component's <code>render</code> function.
       </p>
 
       <CustomComponentDataExample />

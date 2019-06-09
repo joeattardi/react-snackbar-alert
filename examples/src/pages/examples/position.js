@@ -12,8 +12,8 @@ export default function PositionPage() {
     <Layout title="Position">
       <p>
         By default, snackbars appear at the bottom center of the screen. This
-        can be changed via the <code>position</code> prop on the
-        <code>SnackbarManager</code>. Value values are:
+        can be changed via the <code>position</code> prop on the&nbsp;
+        <code>SnackbarProvider</code>. Valid values are:
       </p>
 
       <ul>

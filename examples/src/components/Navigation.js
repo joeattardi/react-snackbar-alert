@@ -31,6 +31,11 @@ export default function Navigation({ visible }) {
           </Link>
         </li>
         <li>
+          <Link to="/examples/theme/" activeClassName={styles.active}>
+            Themes
+          </Link>
+        </li>
+        <li>
           <Link to="/examples/position/" activeClassName={styles.active}>
             Position
           </Link>
